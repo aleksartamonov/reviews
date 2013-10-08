@@ -1,3 +1,5 @@
+import com.google.gson.annotations.Expose;
+
 /**
  * Created with IntelliJ IDEA.
  * User: aleksey
@@ -8,15 +10,16 @@
 public class Vcard {
 
     String val;
-    String fn;
+    @Expose String fn;
 
-    public Vcard(String val,String fn) {
+    public Vcard(String val, String fn) {
         this.val = val;
         this.fn = fn;
     }
+
     public Vcard() {
-        this.val = Review.badString;
-        this.fn = Review.badString;
+        this.val = Review.DEFAULT_STRING;
+        this.fn = Review.DEFAULT_STRING;
     }
 
     @Override

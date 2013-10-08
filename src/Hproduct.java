@@ -1,3 +1,5 @@
+import com.google.gson.annotations.Expose;
+
 /**
  * Created with IntelliJ IDEA.
  * User: aleksey
@@ -8,15 +10,15 @@
 public class Hproduct {
 
     String val;
-    String category;
-    String photo;
-    String url;
-    String brand;
-    String fn;
-    String identifier;
+    @Expose String category;
+    @Expose String photo;
+    @Expose String url;
+    @Expose String brand;
+    @Expose String fn;
+    @Expose Identifier identifier;
 
     public Hproduct(String val, String category, String photo, String url, String brand, String fn,
-                            String identifier) {
+                    Identifier identifier) {
         this.val = val;
         this.category = category;
         this.photo = photo;
@@ -25,14 +27,15 @@ public class Hproduct {
         this.fn = fn;
         this.identifier = identifier;
     }
-    public Hproduct(){
-        this.val = Review.badString;
-        this.category = Review.badString;
-        this.photo = Review.badString;
-        this.url = Review.badString;
-        this.brand = Review.badString;
-        this.fn = Review.badString;
-        this.identifier = Review.badString;
+
+    public Hproduct() {
+        this.val = Review.DEFAULT_STRING;
+        this.category = Review.DEFAULT_STRING;
+        this.photo = Review.DEFAULT_STRING;
+        this.url = Review.DEFAULT_STRING;
+        this.brand = Review.DEFAULT_STRING;
+        this.fn = Review.DEFAULT_STRING;
+        this.identifier = new Identifier();
     }
 
     @Override

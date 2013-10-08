@@ -1,3 +1,5 @@
+import com.google.gson.annotations.Expose;
+
 /**
  * Created with IntelliJ IDEA.
  * User: aleksey
@@ -6,9 +8,10 @@
  * To change this template use File | Settings | File Templates.
  */
 public class Rating {
-    String value;
-    String worst;
-    String best;
+
+    @Expose String value;
+    @Expose String worst;
+    @Expose  String best;
 
 
     public Rating(String value, String worst, String best) {
@@ -16,10 +19,11 @@ public class Rating {
         this.worst = worst;
         this.best = best;
     }
-    public Rating(){
-        this.value = Review.badString;
-        this.best = Review.badString;
-        this.worst =Review.badString;
+
+    public Rating() {
+        this.value = Review.DEFAULT_STRING;
+        this.best = Review.DEFAULT_STRING;
+        this.worst = Review.DEFAULT_STRING;
     }
 
     @Override

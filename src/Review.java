@@ -1,3 +1,5 @@
+import com.google.gson.annotations.Expose;
+
 /**
  * Created with IntelliJ IDEA.
  * User: aleksey
@@ -7,23 +9,22 @@
  */
 public class Review {
 
-    public final static String badString = "";
-
-    String summary;
-    String description;
-    String pro;
-    String contra;
-    String dtReviewed;
-    String permalink;
-    String type;
-    String owningTime;
-    String reviewsUrl;
-    Rating rating;
-    Reviewer reviewer;
-    Item item;
+    public final static String DEFAULT_STRING =  null;
+    @Expose String summary;
+    @Expose String description;
+    @Expose String pro;
+    @Expose String contra;
+    @Expose String dtReviewed;
+    @Expose String permalink;
+    @Expose String type;
+    @Expose String owningTime;
+    @Expose String reviewsUrl;
+    @Expose Rating rating;
+    @Expose Reviewer reviewer;
+    @Expose Item item;
 
     public Review(String summary, String description, String pro, String contra, String dtReviewed, String permalink,
-                     String type, String owningTime, String reviewsUrl,Rating rating,Reviewer reviewer,Item item) {
+                  String type, String owningTime, String reviewsUrl, Rating rating, Reviewer reviewer, Item item) {
         this.summary = summary;
         this.description = description;
         this.pro = pro;
@@ -37,16 +38,17 @@ public class Review {
         this.reviewer = reviewer;
         this.item = item;
     }
-    public Review(){
-        this.summary = badString;
-        this.description = badString;
-        this.pro = badString;
-        this.contra = badString;
-        this.dtReviewed = badString;
-        this.permalink = badString;
-        this.type = badString;
-        this.owningTime = badString;
-        this.reviewsUrl = badString;
+
+    public Review() {
+        this.summary = DEFAULT_STRING;
+        this.description = DEFAULT_STRING;
+        this.pro = DEFAULT_STRING;
+        this.contra = DEFAULT_STRING;
+        this.dtReviewed = DEFAULT_STRING;
+        this.permalink = DEFAULT_STRING;
+        this.type = DEFAULT_STRING;
+        this.owningTime = DEFAULT_STRING;
+        this.reviewsUrl = DEFAULT_STRING;
         this.rating = new Rating();
         this.reviewer = new Reviewer();
         this.item = new Item();
@@ -69,8 +71,6 @@ public class Review {
                 ", item=" + item +
                 '}';
     }
-
-
 
 
 }

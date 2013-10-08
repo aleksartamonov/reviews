@@ -1,3 +1,5 @@
+import com.google.gson.annotations.Expose;
+
 /**
  * Created with IntelliJ IDEA.
  * User: aleksey
@@ -8,14 +10,15 @@
 public class Item {
 
     String val;
-    Hproduct hproduct;
+    @Expose Hproduct hproduct;
 
-    public Item(String val,Hproduct hproduct) {
+    public Item(String val, Hproduct hproduct) {
         this.val = val;
         this.hproduct = hproduct;
     }
-    public Item(){
-        this.val = Review.badString;
+
+    public Item() {
+        this.val = Review.DEFAULT_STRING;
         this.hproduct = new Hproduct();
     }
 

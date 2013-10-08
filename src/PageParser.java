@@ -1,5 +1,7 @@
+import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
@@ -13,39 +15,41 @@ import java.io.IOException;
  */
 
 public class PageParser {
-
-    private String extractTextFromTag(Elements tag,String htmlClassName){
+    private static final Logger LOG = Logger.getLogger(PageParser.class);
+    private String extractTextFromTag(Elements tag, String htmlClassName) {
         String s;
-        Elements tempTag = tag.select("."+htmlClassName);
-        s =  !tempTag.isEmpty() ? tempTag.first().text() : Review.badString;
+        Elements tempTag = tag.select("." + htmlClassName);
+        s = !tempTag.isEmpty() ? tempTag.first().text() : Review.DEFAULT_STRING;
         return s;
     }
-    private String extractHrefValFromTag(Elements tag,String htmlClassName, String url){
 
-        Elements tempTag = tag.select("."+htmlClassName);
-        return !tempTag.isEmpty() ? url + tempTag.attr("href") : Review.badString;
+    private String extractHrefValFromTag(Elements tag, String htmlClassName, String url) {
+
+        Elements tempTag = tag.select("." + htmlClassName);
+        return !tempTag.isEmpty() ? url + tempTag.attr("href") : Review.DEFAULT_STRING;
 
     }
+
     private Rating extractRatingInfo(Elements eRating) {
 
-        String val,best,worst;
+        String val, best, worst;
 
         val = eRating.text();
 
-        best = extractTextFromTag(eRating,"best");
-        worst = extractTextFromTag(eRating,"worst");
+        best = extractTextFromTag(eRating, "best");
+        worst = extractTextFromTag(eRating, "worst");
 
-        return new Rating(val,worst,best);
+        return new Rating(val, worst, best);
     }
 
-    private Vcard extractVcard(Elements eVcard){
-        String val,fn;
+    private Vcard extractVcard(Elements eVcard) {
+        String val, fn;
 
         val = eVcard.first().text();
 
-        fn = extractTextFromTag(eVcard,"fn");
+        fn = extractTextFromTag(eVcard, "fn");
 
-        return new Vcard(val,fn);
+        return new Vcard(val, fn);
     }
 
     private Reviewer extractReviewerInfo(Elements eReviewer) {
@@ -56,147 +60,146 @@ public class PageParser {
 
         Elements eVcard = eReviewer.select(".vcard");
 
-        if(!eVcard.isEmpty() ){
+        if (!eVcard.isEmpty()) {
             vcard = extractVcard(eVcard);
-        }else{
+        } else {
             vcard = new Vcard();
-            // TODO : out to log
+            LOG.warn("There is no Vcard info");
         }
 
-        return new Reviewer(val,vcard);
+        return new Reviewer(val, vcard);
     }
 
-    private Hproduct extractHproductInfo(Elements eHproduct,String big_url){
-        String val,category,photo,url,brand,fn,identifier;
+    private Identifier pullIdentifiers(Elements elements){
+
+        Identifier identifier = new Identifier();
+        String key,value;
+        for (Element elem : elements){
+            key = elem.select(".type").select(".value-title").attr("title");
+            value = elem.text();
+            identifier.addIdentity(key,value);
+        }
+
+        return identifier;
+    }
+
+    private Hproduct extractHproductInfo(Elements eHproduct) {
+        String val, category, photo, url, brand, fn;
+        Identifier identifier;
 
         val = eHproduct.first().text();
-        category= extractTextFromTag(eHproduct,"category");
-        photo= extractTextFromTag(eHproduct,"photo");
-        brand= extractTextFromTag(eHproduct,"brand");
-        fn= extractTextFromTag(eHproduct,"fn");
-        identifier = extractTextFromTag(eHproduct,"identifier");
-        url = extractHrefValFromTag(eHproduct,"url",big_url);
+        category = extractTextFromTag(eHproduct, "category");
+        photo = extractTextFromTag(eHproduct, "photo");
+        brand = extractTextFromTag(eHproduct, "brand");
+        fn = extractTextFromTag(eHproduct, "fn");
+        Elements eIdentifiers = eHproduct.select(".identifier");
 
+        url = extractHrefValFromTag(eHproduct, "url", ReviewExtractor.mainPageUrl);
 
-        return new Hproduct(val,category,photo,url,brand,fn,identifier);
+        identifier = pullIdentifiers(eIdentifiers);
+
+        return new Hproduct(val, category, photo, url, brand, fn, identifier);
     }
 
-    private Item extractItemInfo(Elements eItem,String url){
+    private Item extractItemInfo(Elements eItem, String url) {
         String val;
         Hproduct hproduct;
 
         val = eItem.first().text();
 
-         Elements eHproduct = eItem.select(".hproduct");
+        Elements eHproduct = eItem.select(".hproduct");
 
-        if(!eHproduct.isEmpty()){
-            hproduct = extractHproductInfo(eHproduct,url);
+        if (!eHproduct.isEmpty()) {
+            hproduct = extractHproductInfo(eHproduct);
         } else {
             hproduct = new Hproduct();
-            // TODO : out to log
+            LOG.warn("There is no hproduct info on " + url);
         }
 
-        return new Item(val,hproduct);
+        return new Item(val, hproduct);
     }
 
-    Review constructReview(Document doc, String url){
+    Review constructReview(Document doc, String url) {
 
-        String summary,description,pro,contra,dtReviewed,permalink,type,owningTime,reviewsUrl;
+        String summary, description, pro, contra, dtReviewed, permalink, type, owningTime, reviewsUrl;
 
         Reviewer reviewer;
         Rating rating;
         Item item;
-
         Review review;
-
-
         // top-level tags extracting
 
         Elements tag = doc.select(".hreview");
 
+        if (!tag.isEmpty()) {
 
-        if(tag != null){
-
-            System.out.println(tag);
-
-            summary = extractTextFromTag(tag,"summary");
-            description = extractTextFromTag(tag,"description");
-            pro = extractTextFromTag(tag,"pro");
-            contra = extractTextFromTag(tag,"contra");
-            dtReviewed = extractTextFromTag(tag,"dtReviewed");
-            reviewsUrl = extractTextFromTag(tag,"reviewsUrl");
-            type = extractTextFromTag(tag,"type");
-            owningTime = extractTextFromTag(tag,"owningTime");
-            permalink = extractHrefValFromTag(tag,"permalink",url);
-            Elements eRating = tag.select(".rating") ;
-
-            System.out.println(contra);
-
-            if(eRating != null){
+            summary = extractTextFromTag(tag, "summary");
+            description = extractTextFromTag(tag, "description");
+            pro = extractTextFromTag(tag, "pro");
+            contra = extractTextFromTag(tag, "contra");
+            dtReviewed = extractTextFromTag(tag, "dtReviewed");
+            reviewsUrl = extractTextFromTag(tag, "reviewsUrl");
+            type = extractTextFromTag(tag, "type");
+            owningTime = extractTextFromTag(tag, "owningTime");
+            permalink = extractHrefValFromTag(tag, "permalink", ReviewExtractor.mainPageUrl);
+            Elements eRating = tag.select(".rating");
+            if (eRating != null) {
 
                 rating = extractRatingInfo(eRating);
 
-            }else {
+            } else {
                 rating = new Rating();
-                // TODO : out to log
+                LOG.warn("There is no rating info on " + url);
             }
 
             Elements eReviewer = tag.select(".reviewer");
 
-            if(eReviewer != null){
+            if (!eReviewer.isEmpty()) {
                 reviewer = extractReviewerInfo(eReviewer);
-            }
-            else{
-                // TODO : out to log
+            } else {
                 reviewer = new Reviewer();
+                LOG.warn("There is no reviewer info on " + url);
             }
 
             Elements eItem = tag.select(".item");
 
-            if(eItem != null){
+            if (!eItem.isEmpty()) {
 
-                item = extractItemInfo(eItem,url);
+                item = extractItemInfo(eItem, url);
 
-            }
-            else{
+            } else {
                 item = new Item();
-                //TODO : out to log
+                LOG.warn("There is no item info on " + url);
             }
 
 
-            review = new Review(summary,description,pro,contra,dtReviewed,permalink,
-                    type,owningTime,reviewsUrl,rating,reviewer,item);
+            review = new Review(summary, description, pro, contra, dtReviewed, permalink,
+                    type, owningTime, reviewsUrl, rating, reviewer, item);
 
         } else {
             review = new Review();
-            // TODO : out to log
+            LOG.warn("There is no review on " + url);
         }
-
-
         return review;
     }
 
 
-    Review getReviewFromPage(String url){
+    Review getReviewFromPage(String url) {
         // полуение Review со страницы adEkb
         Review review = null;
+        LOG.debug("Start processing");
         Document doc;
         try {
             // get doc
 
             doc = Jsoup.connect(url).get();
-
-
             //construct Review
-            review = constructReview(doc,url);
+            review = constructReview(doc, url);
 
 
-        }catch (IOException e){
-            //TODO : out to log
-            System.out.println("could not connect");
+        } catch (IOException e) {
+            LOG.error("Cannot connect to " + url, e);
         }
-        System.out.println("All page info");
-        System.out.println(review);
         return review;
     }
 }
