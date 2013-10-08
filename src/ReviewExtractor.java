@@ -1,3 +1,5 @@
+import com.google.gson.Gson;
+
 /**
  * Created with IntelliJ IDEA.
  * User: aleksey
@@ -10,5 +12,9 @@ public class ReviewExtractor {
 
         PageParser p = new PageParser();
         Review res = p.getReviewFromPage("http://adekb.ru/cars/reviews/?ID=532682");
+        Gson gson = new Gson();
+        String json = gson.toJson(res);
+        System.out.println(json);
+
     }
 }
