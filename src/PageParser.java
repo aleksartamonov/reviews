@@ -5,6 +5,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 /**
  * Created with IntelliJ IDEA.
@@ -70,14 +71,14 @@ public class PageParser {
         return new Reviewer(val, vcard);
     }
 
-    private Identifier pullIdentifiers(Elements elements){
+    private HashMap<String,String> pullIdentifiers(Elements elements){
 
-        Identifier identifier = new Identifier();
+        HashMap<String,String> identifier = new HashMap<String, String>();
         String key,value;
         for (Element elem : elements){
             key = elem.select(".type").select(".value-title").attr("title");
             value = elem.text();
-            identifier.addIdentity(key,value);
+            identifier.put(key,value);
         }
 
         return identifier;
@@ -85,7 +86,7 @@ public class PageParser {
 
     private Hproduct extractHproductInfo(Elements eHproduct) {
         String val, category, photo, url, brand, fn;
-        Identifier identifier;
+        HashMap<String,String> identifier;
 
         val = eHproduct.first().text();
         category = extractTextFromTag(eHproduct, "category");

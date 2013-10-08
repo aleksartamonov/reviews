@@ -1,5 +1,7 @@
 import com.google.gson.annotations.Expose;
 
+import java.util.HashMap;
+
 /**
  * Created with IntelliJ IDEA.
  * User: aleksey
@@ -15,10 +17,10 @@ public class Hproduct {
     @Expose String url;
     @Expose String brand;
     @Expose String fn;
-    @Expose Identifier identifier;
+    @Expose HashMap<String,String> identifier;
 
     public Hproduct(String val, String category, String photo, String url, String brand, String fn,
-                    Identifier identifier) {
+                    HashMap<String,String> identifier) {
         this.val = val;
         this.category = category;
         this.photo = photo;
@@ -35,7 +37,7 @@ public class Hproduct {
         this.url = Review.DEFAULT_STRING;
         this.brand = Review.DEFAULT_STRING;
         this.fn = Review.DEFAULT_STRING;
-        this.identifier = new Identifier();
+        this.identifier = null;
     }
 
     @Override
