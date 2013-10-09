@@ -10,7 +10,8 @@ import com.google.gson.annotations.Expose;
 public class Item {
 
     String val;
-    @Expose Hproduct hproduct;
+    @Expose
+    Hproduct hproduct;
 
     public Item(String val, Hproduct hproduct) {
         this.val = val;

@@ -10,7 +10,8 @@ import com.google.gson.annotations.Expose;
 public class Reviewer {
 
     String val;
-    @Expose Vcard vcard;
+    @Expose
+    Vcard vcard;
 
     public Reviewer(String val, Vcard vcard) {
         this.val = val;

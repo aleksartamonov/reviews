@@ -9,9 +9,12 @@ import com.google.gson.annotations.Expose;
  */
 public class Rating {
 
-    @Expose String value;
-    @Expose String worst;
-    @Expose  String best;
+    @Expose
+    String value;
+    @Expose
+    String worst;
+    @Expose
+    String best;
 
 
     public Rating(String value, String worst, String best) {

@@ -9,19 +9,31 @@ import com.google.gson.annotations.Expose;
  */
 public class Review {
 
-    public final static String DEFAULT_STRING =  null;
-    @Expose String summary;
-    @Expose String description;
-    @Expose String pro;
-    @Expose String contra;
-    @Expose String dtReviewed;
-    @Expose String permalink;
-    @Expose String type;
-    @Expose String owningTime;
-    @Expose String reviewsUrl;
-    @Expose Rating rating;
-    @Expose Reviewer reviewer;
-    @Expose Item item;
+    public final static String DEFAULT_STRING = null;
+    @Expose
+    String summary;
+    @Expose
+    String description;
+    @Expose
+    String pro;
+    @Expose
+    String contra;
+    @Expose
+    String dtReviewed;
+    @Expose
+    String permalink;
+    @Expose
+    String type;
+    @Expose
+    String owningTime;
+    @Expose
+    String reviewsUrl;
+    @Expose
+    Rating rating;
+    @Expose
+    Reviewer reviewer;
+    @Expose
+    Item item;
 
     public Review(String summary, String description, String pro, String contra, String dtReviewed, String permalink,
                   String type, String owningTime, String reviewsUrl, Rating rating, Reviewer reviewer, Item item) {
@@ -49,9 +61,9 @@ public class Review {
         this.type = DEFAULT_STRING;
         this.owningTime = DEFAULT_STRING;
         this.reviewsUrl = DEFAULT_STRING;
-        this.rating = new Rating();
-        this.reviewer = new Reviewer();
-        this.item = new Item();
+        this.rating = null;
+        this.reviewer = null;
+        this.item = null;
     }
 
     @Override

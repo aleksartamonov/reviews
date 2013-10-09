@@ -10,7 +10,8 @@ import com.google.gson.annotations.Expose;
 public class Vcard {
 
     String val;
-    @Expose String fn;
+    @Expose
+    String fn;
 
     public Vcard(String val, String fn) {
         this.val = val;

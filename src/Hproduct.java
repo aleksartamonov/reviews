@@ -12,15 +12,21 @@ import java.util.HashMap;
 public class Hproduct {
 
     String val;
-    @Expose String category;
-    @Expose String photo;
-    @Expose String url;
-    @Expose String brand;
-    @Expose String fn;
-    @Expose HashMap<String,String> identifier;
+    @Expose
+    String category;
+    @Expose
+    String photo;
+    @Expose
+    String url;
+    @Expose
+    String brand;
+    @Expose
+    String fn;
+    @Expose
+    HashMap<String, String> identifier;
 
     public Hproduct(String val, String category, String photo, String url, String brand, String fn,
-                    HashMap<String,String> identifier) {
+                    HashMap<String, String> identifier) {
         this.val = val;
         this.category = category;
         this.photo = photo;
