@@ -3,6 +3,13 @@ import com.google.gson.annotations.Expose;
 /**
  * Created with IntelliJ IDEA.
  * User: aleksey
+ * Date: 09.10.13
+ * Time: 22:44
+ * To change this template use File | Settings | File Templates.
+ */
+/**
+ * Created with IntelliJ IDEA.
+ * User: aleksey
  * Date: 07.10.13
  * Time: 18:28
  * To change this template use File | Settings | File Templates.
@@ -68,7 +75,7 @@ public class Review {
 
     @Override
     public String toString() {
-        return "Review{" +
+        return "review.Review.Review{" +
                 "summary='" + summary + '\'' +
                 ", description='" + description + '\'' +
                 ", pro='" + pro + '\'' +
@@ -86,3 +93,4 @@ public class Review {
 
 
 }
+

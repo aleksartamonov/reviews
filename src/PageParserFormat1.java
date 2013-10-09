@@ -203,7 +203,7 @@ public class PageParserFormat1 implements PageParser {
 
 
     public Review getReviewFromPage(String url) {
-        // получение Review со страницы adEkb
+        // получение review.Review.Review со страницы adEkb
         Review review = null;
         Document doc;
         try {
@@ -215,7 +215,7 @@ public class PageParserFormat1 implements PageParser {
             // get doc
 
             doc = Jsoup.connect(url).get();
-            //construct Review
+            //construct review.Review.Review
             review = constructReview(doc, url);
 
         } catch (IOException e) {
