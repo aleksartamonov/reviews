@@ -1,3 +1,5 @@
+package printer;
+
 /**
  * Created with IntelliJ IDEA.
  * User: aleksey
@@ -15,7 +17,7 @@ public enum Format {
         this.val = val;
     }
 
-    String val() {
+    public String val() {
         return val;
     }
 }

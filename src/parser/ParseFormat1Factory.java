@@ -1,3 +1,5 @@
+package parser;
+
 /**
  * Created with IntelliJ IDEA.
  * User: aleksey

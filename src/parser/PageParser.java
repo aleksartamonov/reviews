@@ -1,3 +1,7 @@
+package parser;
+
+import review.Review;
+
 import java.net.URISyntaxException;
 
 /**

@@ -1,4 +1,4 @@
-/**
+package printer; /**
  * Created with IntelliJ IDEA.
  * User: aleksey
  * Date: 09.10.13

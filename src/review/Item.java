@@ -1,3 +1,5 @@
+package review;
+
 import com.google.gson.annotations.Expose;
 
 /**
@@ -25,7 +27,7 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item{" +
+        return "review.Item{" +
                 "val='" + val + '\'' +
                 ", hproduct=" + hproduct +
                 '}';

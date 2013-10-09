@@ -1,4 +1,7 @@
+package review;
+
 import com.google.gson.annotations.Expose;
+import review.Review;
 
 import java.util.HashMap;
 
@@ -48,7 +51,7 @@ public class Hproduct {
 
     @Override
     public String toString() {
-        return "Hproduct{" +
+        return "review.Hproduct{" +
                 "val='" + val + '\'' +
                 ", category='" + category + '\'' +
                 ", photo='" + photo + '\'' +

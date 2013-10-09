@@ -1,8 +1,12 @@
+package printer;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import logger.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.XML;
+import review.Review;
 
 import java.io.*;
 
@@ -29,7 +33,7 @@ public class PrinterXML implements Printer {
             output.close();
         } catch (IOException e) {
             e.printStackTrace();
-            ReviewExtractor.LOG.error("Invalid path");
+            Logger.LOG.error("Invalid path");
             throw e;
         }
         first = false;

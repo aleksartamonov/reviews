@@ -1,3 +1,5 @@
+package website;
+
 /**
  * Created with IntelliJ IDEA.
  * User: aleksey

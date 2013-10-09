@@ -1,4 +1,15 @@
+package website;
+
+import printer.Printer;
+import logger.Logger;
 import org.json.JSONException;
+import parser.PageParser;
+import parser.PageParserFactory;
+import parser.ParseFormat1Factory;
+import printer.Format;
+import printer.PrinterJSON;
+import printer.PrinterXML;
+import review.Review;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -29,7 +40,7 @@ public class AdEkb implements WebSite {
     private Integer getLastReviewID() {
 
         Review review = getReview(this.reviewPage);
-        String permalink = review.permalink;
+        String permalink = review.getPermalink();
         return Integer.parseInt(permalink.split("ID=")[1]);
 
     }
@@ -61,7 +72,7 @@ public class AdEkb implements WebSite {
         }
 
         if(printer == null){
-            ReviewExtractor.LOG.error("Unknown format for output");
+            Logger.LOG.error("Unknown format for output");
         }
 
         else{
@@ -76,7 +87,7 @@ public class AdEkb implements WebSite {
                         e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                     } catch (IOException e) {
                         e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-                        ReviewExtractor.LOG.error("Invalid path");
+                        Logger.LOG.error("Invalid path");
                         return;
                     }
                 }

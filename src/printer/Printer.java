@@ -1,4 +1,7 @@
+package printer;
+
 import org.json.JSONException;
+import review.Review;
 
 import java.io.IOException;
 
@@ -9,7 +12,7 @@ import java.io.IOException;
  * Time: 19:04
  * To change this template use File | Settings | File Templates.
  */
-interface Printer {
+public interface Printer {
     void write(Review review, String filename) throws JSONException, IOException;
 
     void formatOut(String filename);

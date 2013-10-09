@@ -1,4 +1,7 @@
+package review;
+
 import com.google.gson.annotations.Expose;
+import review.Review;
 
 /**
  * Created with IntelliJ IDEA.
@@ -31,7 +34,7 @@ public class Rating {
 
     @Override
     public String toString() {
-        return "Rating{" +
+        return "review.Rating{" +
                 "value='" + value + '\'' +
                 ", worst='" + worst + '\'' +
                 ", best='" + best + '\'' +

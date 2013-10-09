@@ -1,3 +1,5 @@
+package review;
+
 import com.google.gson.annotations.Expose;
 
 /**
@@ -75,7 +77,7 @@ public class Review {
 
     @Override
     public String toString() {
-        return "review.Review.Review{" +
+        return "review.review.Review.review.Review{" +
                 "summary='" + summary + '\'' +
                 ", description='" + description + '\'' +
                 ", pro='" + pro + '\'' +
@@ -92,5 +94,8 @@ public class Review {
     }
 
 
+    public String getPermalink() {
+        return permalink;
+    }
 }
 

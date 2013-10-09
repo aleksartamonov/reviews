@@ -1,34 +1,36 @@
+package review;
+
 import com.google.gson.annotations.Expose;
+import review.Review;
 
 /**
  * Created with IntelliJ IDEA.
  * User: aleksey
  * Date: 08.10.13
- * Time: 10:54
+ * Time: 10:55
  * To change this template use File | Settings | File Templates.
  */
-public class Reviewer {
+public class Vcard {
 
     String val;
     @Expose
-    Vcard vcard;
+    String fn;
 
-    public Reviewer(String val, Vcard vcard) {
+    public Vcard(String val, String fn) {
         this.val = val;
-        this.vcard = vcard;
+        this.fn = fn;
     }
 
-    public Reviewer() {
+    public Vcard() {
         this.val = Review.DEFAULT_STRING;
-        this.vcard = new Vcard();
+        this.fn = Review.DEFAULT_STRING;
     }
 
     @Override
     public String toString() {
-        return "Reviewer{" +
+        return "review.Vcard{" +
                 "val='" + val + '\'' +
-                ", vcard=" + vcard +
+                ", fn='" + fn + '\'' +
                 '}';
     }
 }
-

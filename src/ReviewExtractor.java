@@ -1,9 +1,10 @@
-import org.apache.log4j.Logger;
+import logger.Logger;
 import org.json.JSONException;
+import website.AdEkb;
+import website.WebSite;
 
 import java.net.URISyntaxException;
 import java.util.HashMap;
-
 /**
  * Created with IntelliJ IDEA.
  * User: aleksey
@@ -12,18 +13,19 @@ import java.util.HashMap;
  * To change this template use File | Settings | File Templates.
  */
 public class ReviewExtractor {
-    static final Logger LOG = Logger.getLogger(PageParserFormat1.class);
+
+
     public static void main(String[] args) throws JSONException, URISyntaxException {
-        LOG.debug("Start processing");
+        logger.Logger.LOG.debug("Start processing");
         WebSite adEkb = new AdEkb();
-        HashMap<String,String> argsuments = new HashMap<String, String>();
+        HashMap<String,String> arguments = new HashMap<String, String>();
         for(String s: args){
-            argsuments.put(s.substring(2).split("=")[0],s.substring(2).split("=")[1]);
+            arguments.put(s.substring(2).split("=")[0], s.substring(2).split("=")[1]);
         }
         try{
-            adEkb.getAllReviews(argsuments.get("format"), argsuments.get("outfile"));
+            adEkb.getAllReviews(arguments.get("format"), arguments.get("outfile"));
         } catch (NullPointerException e){
-            LOG.error("Read description for run");
+           Logger.LOG.error("Read description for run");
         }
     }
 }

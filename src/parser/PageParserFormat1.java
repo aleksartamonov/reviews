@@ -1,13 +1,15 @@
+package parser;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
+import review.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.HashMap;
-
+import logger.Logger;
 /**
  * Created with IntelliJ IDEA.
  * User: aleksey
@@ -82,7 +84,7 @@ public class PageParserFormat1 implements PageParser {
             vcard = extractVcard(eVcard);
         } else {
             vcard = new Vcard();
-            ReviewExtractor.LOG.warn("There is no Vcard info");
+            Logger.LOG.warn("There is no review.Vcard info");
         }
 
         return new Reviewer(val, vcard);
@@ -131,7 +133,7 @@ public class PageParserFormat1 implements PageParser {
             hproduct = extractHproductInfo(eHproduct);
         } else {
             hproduct = new Hproduct();
-            ReviewExtractor.LOG.warn("There is no hproduct info on " + url);
+            Logger.LOG.warn("There is no hproduct info on " + url);
         }
 
         return new Item(val, hproduct);
@@ -167,7 +169,7 @@ public class PageParserFormat1 implements PageParser {
 
             } else {
                 rating = new Rating();
-                ReviewExtractor.LOG.warn("There is no rating info on " + url);
+                Logger.LOG.warn("There is no rating info on " + url);
             }
 
             Elements eReviewer = tag.select(".reviewer");
@@ -176,7 +178,7 @@ public class PageParserFormat1 implements PageParser {
                 reviewer = extractReviewerInfo(eReviewer);
             } else {
                 reviewer = new Reviewer();
-                ReviewExtractor.LOG.warn("There is no reviewer info on " + url);
+                Logger.LOG.warn("There is no reviewer info on " + url);
             }
 
             Elements eItem = tag.select(".item");
@@ -187,7 +189,7 @@ public class PageParserFormat1 implements PageParser {
 
             } else {
                 item = new Item();
-                ReviewExtractor.LOG.warn("There is no item info on " + url);
+                Logger.LOG.warn("There is no item info on " + url);
             }
 
 
@@ -196,30 +198,30 @@ public class PageParserFormat1 implements PageParser {
 
         } else {
             review = null;
-            ReviewExtractor.LOG.warn("There is no review on " + url);
+            Logger.LOG.warn("There is no review on " + url);
         }
         return review;
     }
 
 
     public Review getReviewFromPage(String url) {
-        // получение review.Review.Review со страницы adEkb
+        // получение review.review.Review.review.Review со страницы adEkb
         Review review = null;
         Document doc;
         try {
             setUrls(url);
         } catch (URISyntaxException e) {
-            ReviewExtractor.LOG.error("Use correct url", e);
+            Logger.LOG.error("Use correct url", e);
         }
         try {
             // get doc
 
             doc = Jsoup.connect(url).get();
-            //construct review.Review.Review
+            //construct review.review.Review.review.Review
             review = constructReview(doc, url);
 
         } catch (IOException e) {
-            ReviewExtractor.LOG.error("Cannot connect to " + url, e);
+            Logger.LOG.error("Cannot connect to " + url, e);
         }
         return review;
     }
