@@ -16,7 +16,7 @@ import java.io.*;
 public class PrinterXML implements Printer {
     static boolean first = true;
     @Override
-    public void write(Review review, String filename) throws JSONException {
+    public void write(Review review, String filename) throws JSONException, IOException {
 
         Gson formattedGson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().disableHtmlEscaping().create();
         String formattedJson = formattedGson.toJson(review);
@@ -29,6 +29,8 @@ public class PrinterXML implements Printer {
             output.close();
         } catch (IOException e) {
             e.printStackTrace();
+            ReviewExtractor.LOG.error("Invalid path");
+            throw e;
         }
         first = false;
     }

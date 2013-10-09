@@ -20,6 +20,10 @@ public class ReviewExtractor {
         for(String s: args){
             argsuments.put(s.substring(2).split("=")[0],s.substring(2).split("=")[1]);
         }
-        adEkb.getAllReviews(argsuments.get("format"), argsuments.get("outfile"));
+        try{
+            adEkb.getAllReviews(argsuments.get("format"), argsuments.get("outfile"));
+        } catch (NullPointerException e){
+            LOG.error("Read description for run");
+        }
     }
 }

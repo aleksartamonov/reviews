@@ -1,5 +1,6 @@
 import org.json.JSONException;
 
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
@@ -58,21 +59,29 @@ public class AdEkb implements WebSite {
         if(format.equals(Format.JSON.val())){
             printer = new PrinterJSON();
         }
-        if(printer != null){
+
+        if(printer == null){
+            ReviewExtractor.LOG.error("Unknown format for output");
+        }
+
+        else{
             for (String page : allPages) {
                 Review review = getReview(page);
                 if (review != null) {
                     try {
+
                         printer.write(review, filename);
+
                     } catch (JSONException e) {
                         e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                    } catch (IOException e) {
+                        e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                        ReviewExtractor.LOG.error("Invalid path");
+                        return;
                     }
                 }
             }
             printer.formatOut(filename);
-        }
-        else{
-
         }
 
     }
