@@ -1,4 +1,7 @@
 This file was created by IntelliJ IDEA 12.0.4 for binding GitHub repository
+
+Project for extracting reviews from websites
+
 FORMAT one of {XML,JSON}
 run:
 java -jar review.jar --format=FORMAT --outfile=/path/to/outfile
