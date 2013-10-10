@@ -1,6 +1,9 @@
 package review;
 
 import com.google.gson.annotations.Expose;
+import logger.Logger;
+import org.jsoup.select.Elements;
+import parser.PageParserFormat1;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,17 +12,16 @@ import com.google.gson.annotations.Expose;
  * Time: 10:54
  * To change this template use File | Settings | File Templates.
  */
-public class Reviewer {
+public class Reviewer extends InfoBlock {
 
-    String val;
+    private String val;
     @Expose
-    Vcard vcard;
+    private Vcard vcard;
 
     public Reviewer(String val, Vcard vcard) {
         this.val = val;
         this.vcard = vcard;
     }
-
     public Reviewer() {
         this.val = Review.DEFAULT_STRING;
         this.vcard = new Vcard();
@@ -27,10 +29,29 @@ public class Reviewer {
 
     @Override
     public String toString() {
-        return "review.Reviewer{" +
+        return "review.review.Reviewer{" +
                 "val='" + val + '\'' +
                 ", vcard=" + vcard +
                 '}';
+    }
+
+    @Override
+    public Reviewer extractInfoFormat1(Elements eReviewer,String url) {
+
+        PageParserFormat1 parser = new PageParserFormat1();
+
+        String val = eReviewer.first().text();
+
+        Elements eVcard = eReviewer.select(".vcard");
+
+        Vcard vcard = parser.extractInfo(eVcard, Vcard.class);
+
+        return new Reviewer(val, vcard);
+    }
+
+    @Override
+    public void logAboutFail(String reviewPageUrl) {
+        Logger.LOG.warn("Reviewer Info couldn't extract  " + reviewPageUrl);
     }
 }
 

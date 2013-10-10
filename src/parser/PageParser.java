@@ -11,6 +11,10 @@ import java.net.URISyntaxException;
  * Time: 15:43
  * To change this template use File | Settings | File Templates.
  */
+/**
+ *   Interface for Parsers of Pages
+ */
 public interface PageParser {
+
     Review getReviewFromPage(String url) throws URISyntaxException;
 }

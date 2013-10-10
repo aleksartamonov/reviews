@@ -12,6 +12,7 @@ import review.Review;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,14 +22,15 @@ import java.util.ArrayList;
  * To change this template use File | Settings | File Templates.
  */
 public class AdEkb implements WebSite {
-    String reviewPage = "http://adekb.ru/cars/reviews";
+    public final static String reviewPage = "http://adekb.ru/cars/reviews";
     PageParserFactory factory = new ParseFormat1Factory();
 
     public Review getReview(String url) {
-        PageParser p = this.factory.getParser();
+        PageParser p = factory.getParser();
         try {
             return p.getReviewFromPage(url);
         } catch (URISyntaxException e) {
+            Logger.LOG.error(e);
             return null;
         }
 
@@ -37,17 +39,16 @@ public class AdEkb implements WebSite {
 
     private Integer getLastReviewID() {
 
-        Review review = getReview(this.reviewPage);
+        Review review = getReview(reviewPage);
         String permalink = review.getPermalink();
         return Integer.parseInt(permalink.split("ID=")[1]);
 
     }
 
-    private ArrayList<String> getRecentPages(int n) {
+    private List<String> getRecentPages(int n) {
 
         Integer lastReviewID = getLastReviewID();
-        String UrlBegin = this.reviewPage + "/?ID=";
-
+        String UrlBegin = reviewPage + "/?ID=";
         ArrayList<String> pages = new ArrayList<String>();
 
         for (Integer i = lastReviewID; i > lastReviewID - n; i--) {
@@ -60,19 +61,21 @@ public class AdEkb implements WebSite {
     @Override
     public void getAllReviews(Format format, String filename) {
 
-        ArrayList<String> allPages = getRecentPages(10);
+        List<String> allPages = getRecentPages(10);
         Printer printer = format.getPrinter();
         if (printer == null) {
             Logger.LOG.error("Unknown format for output");
         } else {
             for (String page : allPages) {
+
                 Review review = getReview(page);
                 if (review != null) {
                     try {
                         printer.write(review, filename);
 
                     } catch (JSONException e) {
-                        e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                        e.printStackTrace();
+                        Logger.LOG.error(e);  //To change body of catch statement use File | Settings | File Templates.
                     } catch (IOException e) {
                         e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                         Logger.LOG.error("Invalid path");

@@ -28,6 +28,7 @@ public class ReviewExtractor {
             adEkb.getAllReviews(new Format(arguments.get("format")), arguments.get("outfile"));
         } catch (NullPointerException e) {
             Logger.LOG.error("Read description for run");
+            System.exit(1);
         }
     }
 }

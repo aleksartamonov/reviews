@@ -1,6 +1,9 @@
 package review;
 
 import com.google.gson.annotations.Expose;
+import logger.Logger;
+import org.jsoup.select.Elements;
+import parser.PageParserFormat1;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,11 +12,11 @@ import com.google.gson.annotations.Expose;
  * Time: 10:55
  * To change this template use File | Settings | File Templates.
  */
-public class Item {
+public class Item extends InfoBlock {
 
-    String val;
+    private String val;
     @Expose
-    Hproduct hproduct;
+    private Hproduct hproduct;
 
     public Item(String val, Hproduct hproduct) {
         this.val = val;
@@ -27,10 +30,27 @@ public class Item {
 
     @Override
     public String toString() {
-        return "review.Item{" +
+        return "review.review.Item{" +
                 "val='" + val + '\'' +
                 ", hproduct=" + hproduct +
                 '}';
     }
 
+    @Override
+    public Item extractInfoFormat1(Elements eItem, String url) {
+
+        PageParserFormat1 parser = new PageParserFormat1();
+        String val = eItem.first().text();
+
+        Elements eHproduct = eItem.select(".hproduct");
+
+        Hproduct hproduct = parser.extractInfo(eHproduct, Hproduct.class);
+
+        return new Item(val, hproduct);
+    }
+
+    @Override
+    public void logAboutFail(String reviewPageUrl) {
+        Logger.LOG.warn("Item Info couldn't extract  " + reviewPageUrl);
+    }
 }

@@ -3,6 +3,7 @@ package printer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.json.JSONException;
+import printer.Printer;
 import review.Review;
 
 import java.io.BufferedWriter;

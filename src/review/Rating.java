@@ -1,6 +1,8 @@
 package review;
 
 import com.google.gson.annotations.Expose;
+import logger.Logger;
+import org.jsoup.select.Elements;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,14 +11,14 @@ import com.google.gson.annotations.Expose;
  * Time: 10:53
  * To change this template use File | Settings | File Templates.
  */
-public class Rating {
+public class Rating extends InfoBlock {
 
     @Expose
-    String value;
+    private String value;
     @Expose
-    String worst;
+    private String worst;
     @Expose
-    String best;
+    private String best;
 
 
     public Rating(String value, String worst, String best) {
@@ -24,7 +26,6 @@ public class Rating {
         this.worst = worst;
         this.best = best;
     }
-
     public Rating() {
         this.value = Review.DEFAULT_STRING;
         this.best = Review.DEFAULT_STRING;
@@ -33,10 +34,24 @@ public class Rating {
 
     @Override
     public String toString() {
-        return "review.Rating{" +
+        return "review.review.Rating{" +
                 "value='" + value + '\'' +
                 ", worst='" + worst + '\'' +
                 ", best='" + best + '\'' +
                 '}';
+    }
+    @Override
+    public Rating extractInfoFormat1(Elements eRating, String url) {
+
+        String val = eRating.text();
+        String best = extractTextFromTag(eRating, "best");
+        String  worst = extractTextFromTag(eRating, "worst");
+
+        return new Rating(val, worst, best);
+    }
+
+    @Override
+    public void logAboutFail(String reviewPageUrl) {
+        Logger.LOG.warn("Rating Info couldn't extract " + reviewPageUrl);
     }
 }

@@ -6,6 +6,7 @@ package printer; /**
  * To change this template use File | Settings | File Templates.
  */
 
+import logger.Logger;
 import org.xml.sax.InputSource;
 
 import javax.xml.transform.OutputKeys;
@@ -31,7 +32,7 @@ public class XmlFormatter {
             serializer.transform(xmlSource, res);
             return new String(((ByteArrayOutputStream) res.getOutputStream()).toByteArray());
         } catch (Exception e) {
-            //TODO log error
+            Logger.LOG.error("Couldn't parse XML back for reformat it ",e);
             return xml;
         }
     }

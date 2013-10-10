@@ -10,5 +10,6 @@ import parser.PageParserFormat1;
  * To change this template use File | Settings | File Templates.
  */
 public class Logger {
+    // global static LOG for Logging all bad things
     public static final org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(PageParserFormat1.class);
 }
