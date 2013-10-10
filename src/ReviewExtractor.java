@@ -16,16 +16,18 @@ import java.util.HashMap;
  */
 public class ReviewExtractor {
 
+    static int depth = 60;
 
     public static void main(String[] args) throws JSONException, URISyntaxException {
         logger.Logger.LOG.debug("Start processing");
         WebSite adEkb = new AdEkb();
+
         HashMap<String, String> arguments = new HashMap<String, String>();
         for (String s : args) {
             arguments.put(s.substring(2).split("=")[0], s.substring(2).split("=")[1]);
         }
         try {
-            adEkb.getAllReviews(new Format(arguments.get("format")), arguments.get("outfile"));
+            adEkb.getAllReviews(new Format(arguments.get("format")), arguments.get("outfile"),depth);
         } catch (NullPointerException e) {
             Logger.LOG.error("Read description for run");
             System.exit(1);

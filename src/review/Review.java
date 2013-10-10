@@ -1,6 +1,9 @@
 package review;
 
 import com.google.gson.annotations.Expose;
+import logger.Logger;
+import org.jsoup.select.Elements;
+import parser.PageParserFormat1;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,33 +20,33 @@ import com.google.gson.annotations.Expose;
  * Time: 18:28
  * To change this template use File | Settings | File Templates.
  */
-public class Review {
-
+public class Review extends InfoBlock {
     public final static String DEFAULT_STRING = null;
+
     @Expose
-    String summary;
+    private String summary;
     @Expose
-    String description;
+    private String description;
     @Expose
-    String pro;
+    private String pro;
     @Expose
-    String contra;
+    private String contra;
     @Expose
-    String dtReviewed;
+    private String dtReviewed;
     @Expose
-    String permalink;
+    private String permalink;
     @Expose
-    String type;
+    private String type;
     @Expose
-    String owningTime;
+    private String owningTime;
     @Expose
-    String reviewsUrl;
+    private String reviewsUrl;
     @Expose
-    Rating rating;
+    private Rating rating;
     @Expose
-    Reviewer reviewer;
+    private Reviewer reviewer;
     @Expose
-    Item item;
+    private Item item;
 
     public Review(String summary, String description, String pro, String contra, String dtReviewed, String permalink,
                   String type, String owningTime, String reviewsUrl, Rating rating, Reviewer reviewer, Item item) {
@@ -60,7 +63,6 @@ public class Review {
         this.reviewer = reviewer;
         this.item = item;
     }
-
     public Review() {
         this.summary = DEFAULT_STRING;
         this.description = DEFAULT_STRING;
@@ -78,7 +80,7 @@ public class Review {
 
     @Override
     public String toString() {
-        return "review.review.Review.review.Review{" +
+        return "review.review.review.Review.review.review.Review{" +
                 "summary='" + summary + '\'' +
                 ", description='" + description + '\'' +
                 ", pro='" + pro + '\'' +
@@ -97,6 +99,39 @@ public class Review {
 
     public String getPermalink() {
         return permalink;
+    }
+
+    @Override
+    public Review extractInfoFormat1(Elements e, String mainPageUrl) {
+        summary = extractTextFromTag(e, "summary");
+        description = extractTextFromTag(e, "description");
+        pro = extractTextFromTag(e, "pro");
+        contra = extractTextFromTag(e, "contra");
+        dtReviewed = extractTextFromTag(e, "dtReviewed");
+        reviewsUrl = extractTextFromTag(e, "reviewsUrl");
+        type = extractTextFromTag(e, "type");
+        owningTime = extractTextFromTag(e, "owningTime");
+        permalink = extractHrefValFromTag(e, "permalink", mainPageUrl);
+
+        PageParserFormat1 parser = new PageParserFormat1();
+
+        Elements eRating = e.select(".rating");
+        Rating rating =parser.extractInfo(eRating, Rating.class);
+
+        Elements eReviewer = e.select(".reviewer");
+        Reviewer reviewer = parser.extractInfo(eReviewer, Reviewer.class);
+
+        Elements eItem = e.select(".item");
+        Item item = parser.extractInfo(eItem, Item.class);
+
+
+        return new Review(summary, description, pro, contra, dtReviewed, permalink,
+                type, owningTime, reviewsUrl, rating, reviewer, item);
+    }
+
+    @Override
+    public void logAboutFail(String reviewPageUrl) {
+        Logger.LOG.warn("Review Info couldn't extract from " + reviewPageUrl);
     }
 }
 

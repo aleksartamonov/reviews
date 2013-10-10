@@ -1,4 +1,6 @@
-package parser;
+package parser.factory;
+
+import parser.PageParser;
 
 /**
  * Created with IntelliJ IDEA.

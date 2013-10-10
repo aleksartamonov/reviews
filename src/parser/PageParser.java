@@ -15,6 +15,11 @@ import java.net.URISyntaxException;
  *   Interface for Parsers of Pages
  */
 public interface PageParser {
-
+    /**
+     *
+     * @param url source
+     * @return Review information as instance of Review class
+     * @throws URISyntaxException
+     */
     Review getReviewFromPage(String url) throws URISyntaxException;
 }

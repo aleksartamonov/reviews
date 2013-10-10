@@ -3,7 +3,6 @@ package printer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.json.JSONException;
-import printer.Printer;
 import review.Review;
 
 import java.io.BufferedWriter;
@@ -40,6 +39,6 @@ public class PrinterJSON implements Printer {
 
     @Override
     public void formatOut(String filename) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        //Empty because output already formatted
     }
 }

@@ -19,7 +19,11 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
 public class XmlFormatter {
-
+    /**
+     *
+     * @param xml
+     * @return formatted xml
+     */
     public String formatXml(String xml) {
         try {
             Transformer serializer = SAXTransformerFactory.newInstance().newTransformer();
