@@ -1,14 +1,12 @@
 package website;
 
-import printer.Printer;
 import logger.Logger;
 import org.json.JSONException;
 import parser.PageParser;
 import parser.PageParserFactory;
 import parser.ParseFormat1Factory;
 import printer.Format;
-import printer.PrinterJSON;
-import printer.PrinterXML;
+import printer.Printer;
 import review.Review;
 
 import java.io.IOException;
@@ -60,27 +58,17 @@ public class AdEkb implements WebSite {
     }
 
     @Override
-    public void getAllReviews(String format, String filename) {
+    public void getAllReviews(Format format, String filename) {
 
         ArrayList<String> allPages = getRecentPages(10);
-        Printer printer = null;
-        if(format.equals(Format.XMl.val())){
-            printer = new PrinterXML();
-        }
-        if(format.equals(Format.JSON.val())){
-            printer = new PrinterJSON();
-        }
-
-        if(printer == null){
+        Printer printer = format.getPrinter();
+        if (printer == null) {
             Logger.LOG.error("Unknown format for output");
-        }
-
-        else{
+        } else {
             for (String page : allPages) {
                 Review review = getReview(page);
                 if (review != null) {
                     try {
-
                         printer.write(review, filename);
 
                     } catch (JSONException e) {

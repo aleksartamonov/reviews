@@ -1,5 +1,7 @@
 package website;
 
+import printer.Format;
+
 /**
  * Created with IntelliJ IDEA.
  * User: aleksey
@@ -9,6 +11,6 @@ package website;
  */
 public interface WebSite {
 
-    void getAllReviews(String format, String filename);
+    void getAllReviews(Format format, String filename);
 
 }

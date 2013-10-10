@@ -19,6 +19,7 @@ import java.io.*;
  */
 public class PrinterXML implements Printer {
     static boolean first = true;
+
     @Override
     public void write(Review review, String filename) throws JSONException, IOException {
 

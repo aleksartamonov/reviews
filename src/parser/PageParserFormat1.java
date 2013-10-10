@@ -1,15 +1,17 @@
 package parser;
 
+import logger.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import review.*;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.HashMap;
-import logger.Logger;
+
 /**
  * Created with IntelliJ IDEA.
  * User: aleksey
@@ -23,17 +25,16 @@ public class PageParserFormat1 implements PageParser {
     String mainPageUrl;
     String reviewPageUrl;
 
-    public static String getMainPage(String url) throws URISyntaxException {
+    private static String getMainPage(String url) throws URISyntaxException {
         URI uri = new URI(url);
         String domain = uri.getHost();
         return domain.startsWith("www.") ? domain.substring(4) : domain;
     }
 
-    public void setUrls(String url) throws URISyntaxException {
+    private void setUrls(String url) throws URISyntaxException {
         this.mainPageUrl = getMainPage(url);
         this.reviewPageUrl = url;
     }
-
 
 
     private String extractTextFromTag(Elements tag, String htmlClassName) {

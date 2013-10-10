@@ -1,5 +1,7 @@
 package printer;
 
+import java.util.HashMap;
+
 /**
  * Created with IntelliJ IDEA.
  * User: aleksey
@@ -7,17 +9,28 @@ package printer;
  * Time: 16:42
  * To change this template use File | Settings | File Templates.
  */
-public enum Format {
-    XMl("XML"),
-    JSON("JSON");
+public class Format {
 
-    private final String val;
+    static HashMap<String,Printer> printerMap;// = new HashMap<String, Printer>();
+    String name;
+    Printer printer;
 
-    Format(String val) {
-        this.val = val;
+    public Format(String name) {
+        assignMap();
+        this.name = name;
+        this.printer = printerMap.get(name);
     }
 
-    public String val() {
-        return val;
+    public String getName() {
+        return this.name;
+    }
+    public Printer getPrinter() {
+        return printer;
+    }
+
+    private void assignMap(){
+        printerMap = new HashMap<String, Printer>();
+        this.printerMap.put("XML",new PrinterXML());
+        this.printerMap.put("JSON",new PrinterJSON());
     }
 }

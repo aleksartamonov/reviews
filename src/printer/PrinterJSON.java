@@ -19,6 +19,7 @@ import java.io.IOException;
  */
 public class PrinterJSON implements Printer {
     static boolean first = true;
+
     @Override
     public void write(Review review, String filename) throws JSONException {
 
@@ -28,7 +29,7 @@ public class PrinterJSON implements Printer {
         try {
             File file = new File(filename);
             BufferedWriter output = new BufferedWriter(new FileWriter(file, !first));
-            output.write("{review:"+json+"}\n");
+            output.write("{review:" + json + "}\n");
             output.close();
         } catch (IOException e) {
             e.printStackTrace();

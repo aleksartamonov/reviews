@@ -1,95 +1,117 @@
-<?xml version="1.0" encoding="UTF-8"?><reviews>
-  <review>
-    <dtReviewed>2013-10-09</dtReviewed>
-    <permalink>adekb.ru/cars/reviews/?ID=582573</permalink>
-    <contra>Клиренс</contra>
-    <description>Резвая, быстрая в норме своего движка, просторный салон, легка в управлении, хотя в этой комплектации лучше брать дизель!</description>
-    <item>
-      <hproduct>
-        <category/>
-        <brand>Chevrolet</brand>
-        <identifier>
-          <body-type>минивэн</body-type>
-          <displacement>2.0</displacement>
-          <prodyear>2013</prodyear>
-          <run>6400</run>
-          <transmission>АКПП</transmission>
-        </identifier>
-        <fn>Orlando</fn>
-        <url>adekb.ru/cars/catalogue/chevrolet/orlando/</url>
-      </hproduct>
-    </item>
-    <pro>Всем привет. Мощность моего авто 160 лошадок, мне хватает за глаза. На обгон иду смело, причем на гашетку не давлю. Ездить стараюсь не агрессивно, максимум 130  140. При такой езде расход минимальный, 7-8 литров. Трасса и город примерно одинаковы. Приборы информаивные, выдают всю нужную информацию. Свет хороший, хотя ксенон был бы лучше. Мелких погрешностей можно найти вагон, как и в другой любой машине. Я на них не обращаю внимания. Салон большой, в управлении легко и комфортно. Шумка в целом нормальная, хотя ходовая немного слышно. Машина немного низковата, клиренс никуда не годится. Слышал, если заменить амортизаторы и резину вопрос решится. В целом, машиной доволен, а дальше время покажет.</pro>
-    <reviewer>
-      <vcard>
-        <fn>Сергей</fn>
-      </vcard>
-    </reviewer>
-    <rating>
-      <value>4</value>
-    </rating>
-    <type/>
-  </review>
-  <review>
-    <dtReviewed>2013-10-09</dtReviewed>
-    <permalink>adekb.ru/cars/reviews/?ID=582572</permalink>
-    <contra>маленький салон</contra>
-    <description>Машина классная. Брал б/у. За все время не подвела ни разу. Машину эксплуатирую по полной, рыбалка, охота, зима, лето без разницы. Расход топлива 7-9 литров, заправляю 92 бензин, тянет отлично. Коробка - механика, получаю удовольствие. Единственное, поменял задние стойки, отдал 150 баков, а так серьезных поломок нет.</description>
-    <item>
-      <hproduct>
-        <category/>
-        <brand>Mazda</brand>
-        <identifier>
-          <body-type>седан</body-type>
-          <displacement>1.6</displacement>
-          <prodyear>2012</prodyear>
-          <run>75000</run>
-          <transmission>МКПП</transmission>
-        </identifier>
-        <fn>3</fn>
-        <url>adekb.ru/cars/catalogue/mazda/3-2004/</url>
-      </hproduct>
-    </item>
-    <pro>маленький расход, красивый дизайн</pro>
-    <reviewer>
-      <vcard>
-        <fn>Кирилл</fn>
-      </vcard>
-    </reviewer>
-    <rating>
-      <value>4</value>
-    </rating>
-    <type/>
-  </review>
-  <review>
-    <dtReviewed>2013-10-09</dtReviewed>
-    <permalink>adekb.ru/cars/reviews/?ID=582571</permalink>
-    <contra>Из минусов, дешевый и громкий пластик в салоне. Багажник маленький, краска не качественная, шумная подвеска.</contra>
-    <description>Расход 11 литров, без пробок, на трассе 7,5. В общем машина достойная, со своими плюсами и минусами. Рекомендую!</description>
-    <item>
-      <hproduct>
-        <category/>
-        <brand>Mitsubishi</brand>
-        <identifier>
-          <body-type>седан</body-type>
-          <displacement>2.0</displacement>
-          <prodyear>2009</prodyear>
-          <run>53000</run>
-          <transmission>CVT</transmission>
-        </identifier>
-        <fn>Lancer X</fn>
-        <url>adekb.ru/cars/catalogue/mitsubishi/lancer-x-2007/</url>
-      </hproduct>
-    </item>
-    <pro>Машину покупал в автосалоне по акции. Подфартило. Авто подкупило своим видом. Внешний вид убойный, движок 2 литра, 150 лошадей, ощущение, что сидишь в самолете! Салон  сплошной комфорт, клиренс брал максимальный. Ездил на рыбалку, садил 7 человек, ни разу не цепанул. Подвеска цепкая, шел 180, без проблем. Надежный автомобиль, удачный.</pro>
-    <reviewer>
-      <vcard>
-        <fn>Николай</fn>
-      </vcard>
-    </reviewer>
-    <rating>
-      <value>4</value>
-    </rating>
-    <type/>
-  </review>
+<?xml version="1.0" encoding="UTF-8"?>
+<reviews>
+    <review>
+        <dtReviewed>2013-10-09</dtReviewed>
+        <permalink>adekb.ru/cars/reviews/?ID=582573</permalink>
+        <contra>Клиренс</contra>
+        <description>Резвая, быстрая в норме своего движка, просторный салон, легка в управлении, хотя в этой
+            комплектации лучше брать дизель!
+        </description>
+        <item>
+            <hproduct>
+                <category/>
+                <brand>Chevrolet</brand>
+                <identifier>
+                    <body-type>минивэн</body-type>
+                    <displacement>2.0</displacement>
+                    <prodyear>2013</prodyear>
+                    <run>6400</run>
+                    <transmission>АКПП</transmission>
+                </identifier>
+                <fn>Orlando</fn>
+                <url>adekb.ru/cars/catalogue/chevrolet/orlando/</url>
+            </hproduct>
+        </item>
+        <pro>Всем привет. Мощность моего авто 160 лошадок, мне хватает за глаза. На обгон иду смело, причем на гашетку
+            не давлю. Ездить стараюсь не агрессивно, максимум 130  140. При такой езде расход минимальный, 7-8 литров.
+            Трасса и город примерно одинаковы. Приборы информаивные, выдают всю нужную информацию. Свет хороший, хотя
+            ксенон был бы лучше. Мелких погрешностей можно найти вагон, как и в другой любой машине. Я на них не обращаю
+            внимания. Салон большой, в управлении легко и комфортно. Шумка в целом нормальная, хотя ходовая немного
+            слышно. Машина немного низковата, клиренс никуда не годится. Слышал, если заменить амортизаторы и резину
+            вопрос решится. В целом, машиной доволен, а дальше время покажет.
+        </pro>
+        <reviewer>
+            <vcard>
+                <fn>Сергей</fn>
+            </vcard>
+        </reviewer>
+        <rating>
+            <value>4</value>
+        </rating>
+        <type/>
+    </review>
+    <review>
+        <dtReviewed>2013-10-09</dtReviewed>
+        <permalink>adekb.ru/cars/reviews/?ID=582572</permalink>
+        <contra>маленький салон</contra>
+        <description>Машина классная. Брал б/у. За все время не подвела ни разу. Машину эксплуатирую по полной, рыбалка,
+            охота, зима, лето без разницы. Расход топлива 7-9 литров, заправляю 92 бензин, тянет отлично. Коробка -
+            механика, получаю удовольствие. Единственное, поменял задние стойки, отдал 150 баков, а так серьезных
+            поломок нет.
+        </description>
+        <item>
+            <hproduct>
+                <category/>
+                <brand>Mazda</brand>
+                <identifier>
+                    <body-type>седан</body-type>
+                    <displacement>1.6</displacement>
+                    <prodyear>2012</prodyear>
+                    <run>75000</run>
+                    <transmission>МКПП</transmission>
+                </identifier>
+                <fn>3</fn>
+                <url>adekb.ru/cars/catalogue/mazda/3-2004/</url>
+            </hproduct>
+        </item>
+        <pro>маленький расход, красивый дизайн</pro>
+        <reviewer>
+            <vcard>
+                <fn>Кирилл</fn>
+            </vcard>
+        </reviewer>
+        <rating>
+            <value>4</value>
+        </rating>
+        <type/>
+    </review>
+    <review>
+        <dtReviewed>2013-10-09</dtReviewed>
+        <permalink>adekb.ru/cars/reviews/?ID=582571</permalink>
+        <contra>Из минусов, дешевый и громкий пластик в салоне. Багажник маленький, краска не качественная, шумная
+            подвеска.
+        </contra>
+        <description>Расход 11 литров, без пробок, на трассе 7,5. В общем машина достойная, со своими плюсами и
+            минусами. Рекомендую!
+        </description>
+        <item>
+            <hproduct>
+                <category/>
+                <brand>Mitsubishi</brand>
+                <identifier>
+                    <body-type>седан</body-type>
+                    <displacement>2.0</displacement>
+                    <prodyear>2009</prodyear>
+                    <run>53000</run>
+                    <transmission>CVT</transmission>
+                </identifier>
+                <fn>Lancer X</fn>
+                <url>adekb.ru/cars/catalogue/mitsubishi/lancer-x-2007/</url>
+            </hproduct>
+        </item>
+        <pro>Машину покупал в автосалоне по акции. Подфартило. Авто подкупило своим видом. Внешний вид убойный, движок 2
+            литра, 150 лошадей, ощущение, что сидишь в самолете! Салон  сплошной комфорт, клиренс брал максимальный.
+            Ездил на рыбалку, садил 7 человек, ни разу не цепанул. Подвеска цепкая, шел 180, без проблем. Надежный
+            автомобиль, удачный.
+        </pro>
+        <reviewer>
+            <vcard>
+                <fn>Николай</fn>
+            </vcard>
+        </reviewer>
+        <rating>
+            <value>4</value>
+        </rating>
+        <type/>
+    </review>
 </reviews>

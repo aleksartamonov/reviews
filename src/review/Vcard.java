@@ -1,7 +1,6 @@
 package review;
 
 import com.google.gson.annotations.Expose;
-import review.Review;
 
 /**
  * Created with IntelliJ IDEA.

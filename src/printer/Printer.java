@@ -13,6 +13,7 @@ import java.io.IOException;
  * To change this template use File | Settings | File Templates.
  */
 public interface Printer {
+
     void write(Review review, String filename) throws JSONException, IOException;
 
     void formatOut(String filename);

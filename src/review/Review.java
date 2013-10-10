@@ -9,6 +9,7 @@ import com.google.gson.annotations.Expose;
  * Time: 22:44
  * To change this template use File | Settings | File Templates.
  */
+
 /**
  * Created with IntelliJ IDEA.
  * User: aleksey
