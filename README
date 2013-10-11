@@ -4,4 +4,4 @@ Project for extracting reviews from websites
 
 FORMAT one of {XML,JSON}
 run:
-java -jar review.jar --format=FORMAT --outfile=/path/to/outfile
+java -jar reviews.jar --format=FORMAT --outfile=/path/to/outfile
