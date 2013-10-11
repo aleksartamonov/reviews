@@ -21,6 +21,7 @@ public class Vcard extends InfoBlock {
         this.val = val;
         this.fn = fn;
     }
+
     public Vcard() {
         this.val = Review.DEFAULT_STRING;
         this.fn = Review.DEFAULT_STRING;
@@ -35,7 +36,7 @@ public class Vcard extends InfoBlock {
     }
 
     @Override
-    public Vcard extractInfoFormat1(Elements eVcard,String url) {
+    public Vcard extractInfoFormat1(Elements eVcard, String url) {
         String val, fn;
 
         val = eVcard.first().text();

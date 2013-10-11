@@ -63,6 +63,7 @@ public class Review extends InfoBlock {
         this.reviewer = reviewer;
         this.item = item;
     }
+
     public Review() {
         this.summary = DEFAULT_STRING;
         this.description = DEFAULT_STRING;
@@ -116,7 +117,7 @@ public class Review extends InfoBlock {
         PageParserFormat1 parser = new PageParserFormat1();
 
         Elements eRating = e.select(".rating");
-        Rating rating =parser.extractInfo(eRating, Rating.class);
+        Rating rating = parser.extractInfo(eRating, Rating.class);
 
         Elements eReviewer = e.select(".reviewer");
         Reviewer reviewer = parser.extractInfo(eReviewer, Reviewer.class);

@@ -40,6 +40,7 @@ public class Hproduct extends InfoBlock {
         this.fn = fn;
         this.identifier = identifier;
     }
+
     public Hproduct() {
         this.val = Review.DEFAULT_STRING;
         this.category = Review.DEFAULT_STRING;
@@ -62,6 +63,7 @@ public class Hproduct extends InfoBlock {
                 ", identifier='" + identifier + '\'' +
                 '}';
     }
+
     private HashMap<String, String> pullIdentifiers(Elements elements) {
 
         HashMap<String, String> identifier = new HashMap<String, String>();
@@ -85,7 +87,7 @@ public class Hproduct extends InfoBlock {
         brand = extractTextFromTag(eHproduct, "brand");
         fn = extractTextFromTag(eHproduct, "fn");
         Elements eIdentifiers = eHproduct.select(".identifier");
-        url = extractHrefValFromTag(eHproduct, "url",mainPageUrl);
+        url = extractHrefValFromTag(eHproduct, "url", mainPageUrl);
         identifier = pullIdentifiers(eIdentifiers);
         return new Hproduct(val, category, photo, url, brand, fn, identifier);
 

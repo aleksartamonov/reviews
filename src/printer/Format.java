@@ -11,7 +11,7 @@ import java.util.HashMap;
  */
 public class Format {
 
-    static HashMap<String,Printer> printerMap;// = new HashMap<String, Printer>();
+    static HashMap<String, Printer> printerMap;// = new HashMap<String, Printer>();
     private String name;
     private Printer printer;
 
@@ -25,9 +25,9 @@ public class Format {
         return printer;
     }
 
-    private static void assignMap(){
+    private static void assignMap() {
         printerMap = new HashMap<String, Printer>();
-        printerMap.put("XML",new PrinterXML());
-        printerMap.put("JSON",new PrinterJSON());
+        printerMap.put("XML", new PrinterXML());
+        printerMap.put("JSON", new PrinterJSON());
     }
 }

@@ -16,7 +16,8 @@ import java.io.IOException;
 public interface Printer {
     /**
      * Method for print parsing result from Page
-     * @param review  Review for printing
+     *
+     * @param review   Review for printing
      * @param filename /path/to/output.file
      * @throws JSONException
      * @throws IOException
@@ -25,7 +26,8 @@ public interface Printer {
 
     /**
      * Method for finally format output
-     * @param filename
+     *
+     * @param filename filename for format
      */
     void formatOut(String filename);
 }

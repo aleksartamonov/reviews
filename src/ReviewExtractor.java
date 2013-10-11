@@ -27,7 +27,7 @@ public class ReviewExtractor {
             arguments.put(s.substring(2).split("=")[0], s.substring(2).split("=")[1]);
         }
         try {
-            adEkb.getAllReviews(new Format(arguments.get("format")), arguments.get("outfile"),depth);
+            adEkb.getAllReviews(new Format(arguments.get("format")), arguments.get("outfile"), depth);
         } catch (NullPointerException e) {
             Logger.LOG.error("Read description for run");
             System.exit(1);

@@ -6,8 +6,6 @@ import logger.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.XML;
-import printer.Printer;
-import printer.XmlFormatter;
 import review.Review;
 
 import java.io.*;
@@ -26,12 +24,17 @@ public class PrinterXML implements Printer {
     public void write(Review review, String filename) throws JSONException, IOException {
 
         Gson formattedGson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().disableHtmlEscaping().create();
+
         String formattedJson = formattedGson.toJson(review);
         JSONObject o = new JSONObject(formattedJson);
         String xml = XML.toString(o);
         try {
             File file = new File(filename);
-            BufferedWriter output = new BufferedWriter(new FileWriter(file, !first));
+
+            BufferedWriter output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file,!first),"UTF-8"));
+            if (!file.exists()) {
+                file.createNewFile();
+            }
             output.write("<review>" + xml + "</review>");
             output.close();
         } catch (IOException e) {
@@ -57,7 +60,7 @@ public class PrinterXML implements Printer {
             xml = formatter.formatXml("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<reviews>" + xml + "</reviews>");
             try {
                 File file = new File(filename);
-                BufferedWriter output = new BufferedWriter(new FileWriter(file));
+                BufferedWriter output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file),"UTF-8"));
                 output.write(xml);
                 output.close();
             } catch (IOException e) {

@@ -26,6 +26,7 @@ public class PageParserFormat1 implements PageParser {
 
     String mainPageUrl;
     String reviewPageUrl;
+
     private static String getMainPage(String url) throws URISyntaxException {
         URI uri = new URI(url);
         return uri.getHost();
@@ -38,20 +39,20 @@ public class PageParserFormat1 implements PageParser {
 
     /**
      * Extract special review information from block of html
-     * @param e block of html
+     *
+     * @param e      block of html
      * @param tClass for making instance of returnable class
-     * @param <T> extends InfoBlock
+     * @param <T>    extends InfoBlock
      * @return object of class T of null, if some troubles
      */
-    public <T extends InfoBlock> T extractInfo(Elements e, Class<T> tClass)  {
+    public <T extends InfoBlock> T extractInfo(Elements e, Class<T> tClass) {
 
         T t = null;
         try {
             t = tClass.newInstance();
-            if(!e.isEmpty()){
-                t = t.extractInfoFormat1(e,mainPageUrl);
-            }
-            else{
+            if (!e.isEmpty()) {
+                t = t.extractInfoFormat1(e, mainPageUrl);
+            } else {
                 t.logAboutFail(reviewPageUrl);
                 t = null;
             }
@@ -69,7 +70,7 @@ public class PageParserFormat1 implements PageParser {
     private Review constructReview(Document doc) {
 
         Elements eReview = doc.select(".hreview");
-        return extractInfo(eReview,Review.class);
+        return extractInfo(eReview, Review.class);
     }
 
 

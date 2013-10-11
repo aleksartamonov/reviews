@@ -60,15 +60,14 @@ public class AdEkb implements WebSite {
     }
 
     /**
-     *
-     * @param format
-     * @param filename
-     * @param n (depth of extraction "-1" for try extract al reviews )
-     *          note: this is not number of n last reviews, this is number of pages for trying parse.
-     *          for example you can put n is 60 but get only 6 review
+     * @param format Output Format
+     * @param filename  output file
+     * @param n        (depth of extraction "-1" for try extract al reviews )
+     *                 note: this is not number of n last reviews, this is number of pages for trying parse.
+     *                 for example you can put n is 60 but get only 6 review
      */
     @Override
-    public void getAllReviews(Format format, String filename,int n) {
+    public void getAllReviews(Format format, String filename, int n) {
 
         List<String> allPages = getRecentPages(n);
         Printer printer = format.getPrinter();
@@ -81,7 +80,7 @@ public class AdEkb implements WebSite {
                 if (review != null) {
                     try {
                         printer.write(review, filename);
-                        Logger.LOG.debug("From "+ page + " successfully extracted review");
+                        Logger.LOG.debug("From " + page + " successfully extracted review");
                     } catch (JSONException e) {
                         e.printStackTrace();
                         Logger.LOG.error(e);  //To change body of catch statement use File | Settings | File Templates.

@@ -20,8 +20,7 @@ import java.io.ByteArrayOutputStream;
 
 public class XmlFormatter {
     /**
-     *
-     * @param xml
+     * @param xml Xml String for format it
      * @return formatted xml
      */
     public String formatXml(String xml) {
@@ -36,7 +35,7 @@ public class XmlFormatter {
             serializer.transform(xmlSource, res);
             return new String(((ByteArrayOutputStream) res.getOutputStream()).toByteArray());
         } catch (Exception e) {
-            Logger.LOG.error("Couldn't parse XML back for reformat it ",e);
+            Logger.LOG.error("Couldn't parse XML back for reformat it ", e);
             return xml;
         }
     }

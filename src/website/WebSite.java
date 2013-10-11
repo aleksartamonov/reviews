@@ -12,13 +12,12 @@ import printer.Format;
 
 public interface WebSite {
     /**
-     *
-     * @param format format of output
+     * @param format   format of output
      * @param filename /path/to/output
-     * @param n (depth of extraction "-1" for try extract al reviews )
-     *          note: this is not number of n last reviews, this is number of pages for trying parse.
-     *          for example you can put n is 60 but get only 6 review
+     * @param n        (depth of extraction "-1" for try extract al reviews )
+     *                 note: this is not number of n last reviews, this is number of pages for trying parse.
+     *                 for example you can put n is 60 but get only 6 review
      */
-    void getAllReviews(Format format, String filename,int n);
+    void getAllReviews(Format format, String filename, int n);
 
 }

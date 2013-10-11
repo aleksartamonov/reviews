@@ -26,6 +26,7 @@ public class Rating extends InfoBlock {
         this.worst = worst;
         this.best = best;
     }
+
     public Rating() {
         this.value = Review.DEFAULT_STRING;
         this.best = Review.DEFAULT_STRING;
@@ -40,12 +41,13 @@ public class Rating extends InfoBlock {
                 ", best='" + best + '\'' +
                 '}';
     }
+
     @Override
     public Rating extractInfoFormat1(Elements eRating, String url) {
 
         String val = eRating.text();
         String best = extractTextFromTag(eRating, "best");
-        String  worst = extractTextFromTag(eRating, "worst");
+        String worst = extractTextFromTag(eRating, "worst");
 
         return new Rating(val, worst, best);
     }

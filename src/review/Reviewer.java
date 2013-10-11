@@ -22,6 +22,7 @@ public class Reviewer extends InfoBlock {
         this.val = val;
         this.vcard = vcard;
     }
+
     public Reviewer() {
         this.val = Review.DEFAULT_STRING;
         this.vcard = new Vcard();
@@ -36,7 +37,7 @@ public class Reviewer extends InfoBlock {
     }
 
     @Override
-    public Reviewer extractInfoFormat1(Elements eReviewer,String url) {
+    public Reviewer extractInfoFormat1(Elements eReviewer, String url) {
 
         PageParserFormat1 parser = new PageParserFormat1();
 
