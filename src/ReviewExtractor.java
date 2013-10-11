@@ -16,7 +16,7 @@ import java.util.HashMap;
  */
 public class ReviewExtractor {
 
-    static int depth = 600;
+    static int depth = 60;
 
     public static void main(String[] args) throws JSONException, URISyntaxException {
         logger.Logger.LOG.debug("Start processing");
