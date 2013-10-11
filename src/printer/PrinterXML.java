@@ -51,7 +51,7 @@ public class PrinterXML implements Printer {
 
             String sCurrentLine;
             String xml = "";
-            br = new BufferedReader(new FileReader(filename));
+            br = new BufferedReader(new InputStreamReader(new FileInputStream(filename),"UTF-8"));
 
             while ((sCurrentLine = br.readLine()) != null) {
                 xml += sCurrentLine;
