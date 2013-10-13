@@ -66,15 +66,18 @@ public class PrinterXML implements Printer {
                 output.write(xml);
                 output.close();
             } catch (IOException e) {
+                Logger.LOG.error(e);
                 e.printStackTrace();
             }
 
         } catch (IOException e) {
+            Logger.LOG.error(e);
             e.printStackTrace();
         } finally {
             try {
                 if (br != null) br.close();
             } catch (IOException ex) {
+                Logger.LOG.error(ex);
                 ex.printStackTrace();
             }
         }
