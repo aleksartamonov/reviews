@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import logger.Logger;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import parser.impl.PageParserFormat1;
 
 import java.util.HashMap;
 
@@ -70,7 +71,9 @@ public class Hproduct extends InfoBlock {
     }
 
     @Override
-    public Hproduct extractInfoFormat1(Elements eHproduct, String mainPageUrl) {
+    public Hproduct extractInfoFormat1(Elements eHproduct, String in_url) {
+
+        PageParserFormat1 parser = new PageParserFormat1(in_url);
         String val, category, photo, url, brand, fn;
         HashMap<String, String> identifier;
         val = eHproduct.first().text();
@@ -79,7 +82,7 @@ public class Hproduct extends InfoBlock {
         brand = extractTextFromTag(eHproduct, "brand");
         fn = extractTextFromTag(eHproduct, "fn");
         Elements eIdentifiers = eHproduct.select(".identifier");
-        url = extractHrefValFromTag(eHproduct, "url", mainPageUrl);
+        url = extractHrefValFromTag(eHproduct, "url", parser.mainPageUrl);
         identifier = pullIdentifiers(eIdentifiers);
         return new Hproduct(val, category, photo, url, brand, fn, identifier);
 

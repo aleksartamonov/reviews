@@ -36,12 +36,11 @@ public class Reviewer extends InfoBlock {
     @Override
     public Reviewer extractInfoFormat1(Elements eReviewer, String url) {
 
-        PageParserFormat1 parser = new PageParserFormat1();
+        PageParserFormat1 parser = new PageParserFormat1(url);
 
         String val = eReviewer.first().text();
 
         Elements eVcard = eReviewer.select(".vcard");
-
         Vcard vcard = parser.extractInfo(eVcard, Vcard.class);
 
         return new Reviewer(val, vcard);

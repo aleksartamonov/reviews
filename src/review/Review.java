@@ -90,7 +90,8 @@ public class Review extends InfoBlock {
     }
 
     @Override
-    public Review extractInfoFormat1(Elements e, String mainPageUrl) {
+    public Review extractInfoFormat1(Elements e, String url) {
+        PageParserFormat1 parser = new PageParserFormat1(url);
         summary = extractTextFromTag(e, "summary");
         description = extractTextFromTag(e, "description");
         pro = extractTextFromTag(e, "pro");
@@ -99,9 +100,7 @@ public class Review extends InfoBlock {
         reviewsUrl = extractTextFromTag(e, "reviewsUrl");
         type = extractTextFromTag(e, "type");
         owningTime = extractTextFromTag(e, "owningTime");
-        permalink = extractHrefValFromTag(e, "permalink", mainPageUrl);
-
-        PageParserFormat1 parser = new PageParserFormat1();
+        permalink = extractHrefValFromTag(e, "permalink", parser.mainPageUrl);
 
         Elements eRating = e.select(".rating");
         Rating rating = parser.extractInfo(eRating, Rating.class);

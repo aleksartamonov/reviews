@@ -14,7 +14,7 @@ import java.util.HashMap;
  */
 public class Format {
 
-    static HashMap<String, Printer> printerMap;// = new HashMap<String, Printer>();
+    public static HashMap<String, Printer> printerMap;
     private String name;
     private Printer printer;
 
@@ -22,6 +22,9 @@ public class Format {
         assignMap();
         this.name = name;
         this.printer = printerMap.get(name);
+    }
+    public Format(){
+        assignMap();
     }
 
     public Printer getPrinter() {

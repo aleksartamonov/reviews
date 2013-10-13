@@ -1,8 +1,8 @@
 import logger.Logger;
 import org.json.JSONException;
 import printer.Format;
-import website.impl.AdEkb;
 import website.WebSite;
+import website.impl.AdEkb;
 
 import java.net.URISyntaxException;
 import java.util.HashMap;
@@ -16,20 +16,51 @@ import java.util.HashMap;
  */
 public class ReviewExtractor {
 
-    static int depth = 10;
+    static Integer DEFAULT_DEPTH = 10;
+
+    static boolean argumentsAreValid(HashMap<String,String> map){
+        boolean res;
+
+        res = map.containsKey("format");
+        if (!res){
+            Logger.LOG.error("cant find format argument --format, read README");
+            return res;
+        }
+        Format f = new Format();
+        res = res && f.printerMap.containsKey(map.get("format"));
+        if(!res){
+            Logger.LOG.error("Unknown format, read README");
+        }
+        res = res && map.containsKey("outfile");
+        if(!res){
+            Logger.LOG.error("cant find format argument --outfile, read README");
+            return res;
+        }
+        if (map.containsKey("depth")){
+            if (Integer.parseInt(map.get("depth")) < -1){
+                Logger.LOG.error("Invalid depth, read README");
+                return false;
+            }
+        }
+
+        return res;
+    }
 
     public static void main(String[] args) throws JSONException, URISyntaxException {
         logger.Logger.LOG.debug("Start processing");
         WebSite adEkb = new AdEkb();
 
         HashMap<String, String> arguments = new HashMap<String, String>();
+        arguments.put("depth",DEFAULT_DEPTH.toString());
         for (String s : args) {
-            arguments.put(s.substring(2).split("=")[0], s.substring(2).split("=")[1]);
+            String[] ls = s.substring(2).split("=");
+            arguments.put(ls[0], ls[1]);
         }
-        try {
-            adEkb.getAllReviews(new Format(arguments.get("format")), arguments.get("outfile"), depth);
-        } catch (NullPointerException e) {
-            Logger.LOG.error("Read description for run");
+        if (ReviewExtractor.argumentsAreValid(arguments)){
+            adEkb.getAllReviews(new Format(arguments.get("format")), arguments.get("outfile"),
+                    Integer.parseInt(arguments.get("depth")));
+        } else {
+            System.out.println("Something bad. You can see logs in out.log");
             System.exit(1);
         }
     }

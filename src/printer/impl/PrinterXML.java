@@ -22,6 +22,11 @@ import java.io.*;
 public class PrinterXML implements Printer {
     static boolean first = true;
 
+    private String concatThreeStrings(String s1, String s2, String s3){
+        return s1.concat(s2).concat(s3);
+    }
+
+
     @Override
     public void write(Review review, String filename) throws JSONException, IOException {
 
@@ -32,12 +37,11 @@ public class PrinterXML implements Printer {
         String xml = XML.toString(o);
         try {
             File file = new File(filename);
-
-            BufferedWriter output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file,!first),"UTF8"));
             if (!file.exists()) {
                 file.createNewFile();
             }
-            output.write("<review>" + xml + "</review>");
+            BufferedWriter output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file,!first)));
+            output.write(concatThreeStrings("<review>",xml,"</review>"));
             output.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -53,16 +57,17 @@ public class PrinterXML implements Printer {
 
             String sCurrentLine;
             String xml = "";
-            br = new BufferedReader(new InputStreamReader(new FileInputStream(filename),"UTF8"));
+            br = new BufferedReader(new InputStreamReader(new FileInputStream(filename)));
 
             while ((sCurrentLine = br.readLine()) != null) {
                 xml += sCurrentLine;
             }
             XmlFormatter formatter = new XmlFormatter();
-            xml = formatter.formatXml("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<reviews>" + xml + "</reviews>");
+            xml = formatter.formatXml(concatThreeStrings("<?xml version=\"1.0\"?>\n<reviews>",xml,
+                    "</reviews>"));
             try {
                 File file = new File(filename);
-                BufferedWriter output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file),"UTF8"));
+                BufferedWriter output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file)));
                 output.write(xml);
                 output.close();
             } catch (IOException e) {

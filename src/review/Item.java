@@ -36,7 +36,7 @@ public class Item extends InfoBlock {
     @Override
     public Item extractInfoFormat1(Elements eItem, String url) {
 
-        PageParserFormat1 parser = new PageParserFormat1();
+        PageParserFormat1 parser = new PageParserFormat1(url);
         String val = eItem.first().text();
 
         Elements eHproduct = eItem.select(".hproduct");

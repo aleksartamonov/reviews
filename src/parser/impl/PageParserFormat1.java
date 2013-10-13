@@ -25,8 +25,8 @@ import java.net.URISyntaxException;
  */
 public class PageParserFormat1 implements PageParser {
 
-    String mainPageUrl;
-    String reviewPageUrl;
+    public String mainPageUrl;
+    public String reviewPageUrl;
 
     private static String getMainPage(String url) throws URISyntaxException {
         URI uri = new URI(url);
@@ -38,6 +38,15 @@ public class PageParserFormat1 implements PageParser {
         reviewPageUrl = url;
     }
 
+    public PageParserFormat1(String url) {
+        try {
+            setUrls(url);
+        } catch (URISyntaxException e) {
+            Logger.LOG.error(e);
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+    }
+    public PageParserFormat1(){};
     /**
      * Extract special review information from block of html
      *
@@ -52,7 +61,7 @@ public class PageParserFormat1 implements PageParser {
         try {
             t = tClass.newInstance();
             if (!e.isEmpty()) {
-                t = t.extractInfoFormat1(e, mainPageUrl);
+                t = t.extractInfoFormat1(e, reviewPageUrl);
             } else {
                 t.logAboutFail(reviewPageUrl);
                 t = null;
