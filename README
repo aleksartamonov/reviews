@@ -5,9 +5,9 @@ Project for extracting reviews from websites
 FORMAT      one of {XML,JSON}
 outfile     path to result of extracting for ex.: "/home/ursname/out.xml"
 depth       depth of  (depth of extraction "-1" for try extract al reviews ) note:
-            this is not number of n last reviews, this is number of pages for trying parse.
-            For example you can put n is 60 but get only 6 review.
-            Defaul value is 10
+this is not number of n last reviews, this is number of pages for trying parse.
+For example you can put n is 60 but get only 6 review.
+Defaul value is 10
 run:
 java -jar reviews.jar --format=FORMAT --outfile=/path/to/outfile --depth=N
 
