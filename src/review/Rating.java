@@ -27,11 +27,7 @@ public class Rating extends InfoBlock {
         this.best = best;
     }
 
-    public Rating() {
-        this.value = Review.DEFAULT_STRING;
-        this.best = Review.DEFAULT_STRING;
-        this.worst = Review.DEFAULT_STRING;
-    }
+    public Rating() {}
 
     @Override
     public String toString() {

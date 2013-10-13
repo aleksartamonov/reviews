@@ -3,7 +3,7 @@ package review;
 import com.google.gson.annotations.Expose;
 import logger.Logger;
 import org.jsoup.select.Elements;
-import parser.PageParserFormat1;
+import parser.impl.PageParserFormat1;
 
 /**
  * Created with IntelliJ IDEA.
@@ -64,20 +64,7 @@ public class Review extends InfoBlock {
         this.item = item;
     }
 
-    public Review() {
-        this.summary = DEFAULT_STRING;
-        this.description = DEFAULT_STRING;
-        this.pro = DEFAULT_STRING;
-        this.contra = DEFAULT_STRING;
-        this.dtReviewed = DEFAULT_STRING;
-        this.permalink = DEFAULT_STRING;
-        this.type = DEFAULT_STRING;
-        this.owningTime = DEFAULT_STRING;
-        this.reviewsUrl = DEFAULT_STRING;
-        this.rating = null;
-        this.reviewer = null;
-        this.item = null;
-    }
+    public Review() {}
 
     @Override
     public String toString() {

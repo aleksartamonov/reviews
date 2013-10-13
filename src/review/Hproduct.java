@@ -41,15 +41,7 @@ public class Hproduct extends InfoBlock {
         this.identifier = identifier;
     }
 
-    public Hproduct() {
-        this.val = Review.DEFAULT_STRING;
-        this.category = Review.DEFAULT_STRING;
-        this.photo = Review.DEFAULT_STRING;
-        this.url = Review.DEFAULT_STRING;
-        this.brand = Review.DEFAULT_STRING;
-        this.fn = Review.DEFAULT_STRING;
-        this.identifier = null;
-    }
+    public Hproduct() {}
 
     @Override
     public String toString() {

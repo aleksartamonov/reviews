@@ -1,5 +1,8 @@
 package printer;
 
+import printer.impl.PrinterJSON;
+import printer.impl.PrinterXML;
+
 import java.util.HashMap;
 
 /**

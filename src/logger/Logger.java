@@ -1,6 +1,6 @@
 package logger;
 
-import parser.PageParserFormat1;
+import parser.impl.PageParserFormat1;
 
 /**
  * Created with IntelliJ IDEA.

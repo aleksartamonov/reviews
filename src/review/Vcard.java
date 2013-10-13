@@ -22,10 +22,7 @@ public class Vcard extends InfoBlock {
         this.fn = fn;
     }
 
-    public Vcard() {
-        this.val = Review.DEFAULT_STRING;
-        this.fn = Review.DEFAULT_STRING;
-    }
+    public Vcard() {}
 
     @Override
     public String toString() {

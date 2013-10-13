@@ -1,7 +1,7 @@
 import logger.Logger;
 import org.json.JSONException;
 import printer.Format;
-import website.AdEkb;
+import website.impl.AdEkb;
 import website.WebSite;
 
 import java.net.URISyntaxException;
@@ -16,7 +16,7 @@ import java.util.HashMap;
  */
 public class ReviewExtractor {
 
-    static int depth = 60;
+    static int depth = 10;
 
     public static void main(String[] args) throws JSONException, URISyntaxException {
         logger.Logger.LOG.debug("Start processing");

@@ -1,13 +1,14 @@
-package website;
+package website.impl;
 
 import logger.Logger;
 import org.json.JSONException;
 import parser.PageParser;
 import parser.factory.PageParserFactory;
-import parser.factory.ParseFormat1Factory;
+import parser.factory.impl.ParseFormat1Factory;
 import printer.Format;
 import printer.Printer;
 import review.Review;
+import website.WebSite;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

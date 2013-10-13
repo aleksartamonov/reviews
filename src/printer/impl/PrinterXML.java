@@ -1,4 +1,4 @@
-package printer;
+package printer.impl;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -6,6 +6,8 @@ import logger.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.XML;
+import printer.Printer;
+import printer.XmlFormatter;
 import review.Review;
 
 import java.io.*;

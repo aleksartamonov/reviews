@@ -3,7 +3,7 @@ package review;
 import com.google.gson.annotations.Expose;
 import logger.Logger;
 import org.jsoup.select.Elements;
-import parser.PageParserFormat1;
+import parser.impl.PageParserFormat1;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,10 +23,7 @@ public class Reviewer extends InfoBlock {
         this.vcard = vcard;
     }
 
-    public Reviewer() {
-        this.val = Review.DEFAULT_STRING;
-        this.vcard = new Vcard();
-    }
+    public Reviewer() {}
 
     @Override
     public String toString() {

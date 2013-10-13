@@ -1,9 +1,10 @@
-package parser;
+package parser.impl;
 
 import logger.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import parser.PageParser;
 import review.InfoBlock;
 import review.Review;
 
@@ -78,7 +79,6 @@ public class PageParserFormat1 implements PageParser {
         // получение review.review.review.Review.review.review.Review со страницы adEkb
 
         Review review = null;
-        Document doc;
         try {
             setUrls(url);
         } catch (URISyntaxException e) {
@@ -86,8 +86,9 @@ public class PageParserFormat1 implements PageParser {
         }
         try {
             // get doc
-
+            Document doc;
             doc = Jsoup.connect(url).get();
+            doc.outputSettings().charset("UTF-8");
             //construct review.review.review.Review.review.review.Review
 
             review = constructReview(doc);
