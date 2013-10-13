@@ -32,6 +32,7 @@ public class XmlFormatter {
             //serializer.setOutputProperty("{http://xml.customer.org/xslt}indent-amount", "2");
             Source xmlSource = new SAXSource(new InputSource(new ByteArrayInputStream(xml.getBytes())));
             StreamResult res = new StreamResult(new ByteArrayOutputStream());
+            serializer.setOutputProperty(OutputKeys.ENCODING,"UTF-8");
             serializer.transform(xmlSource, res);
             return new String(((ByteArrayOutputStream) res.getOutputStream()).toByteArray());
         } catch (Exception e) {

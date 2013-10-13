@@ -33,14 +33,14 @@ public class PrinterXML implements Printer {
         Gson formattedGson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().disableHtmlEscaping().create();
 
         String formattedJson = formattedGson.toJson(review);
-        JSONObject o = new JSONObject(formattedJson);
+        JSONObject o = new JSONObject(formattedJson);;
         String xml = XML.toString(o);
         try {
             File file = new File(filename);
             if (!file.exists()) {
                 file.createNewFile();
             }
-            BufferedWriter output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file,!first),"UTF-8"));
+            OutputStreamWriter output = new  OutputStreamWriter(new FileOutputStream(file,!first),"UTF-8");
             output.write(concatThreeStrings("<review>",xml,"</review>"));
             output.close();
         } catch (IOException e) {
@@ -57,7 +57,7 @@ public class PrinterXML implements Printer {
 
             String sCurrentLine;
             String xml = "";
-            br = new BufferedReader(new InputStreamReader(new FileInputStream(filename)));
+            br = new BufferedReader(new InputStreamReader(new FileInputStream(filename),"UTF-8"));
 
             while ((sCurrentLine = br.readLine()) != null) {
                 xml += sCurrentLine;
@@ -67,7 +67,7 @@ public class PrinterXML implements Printer {
                     "</reviews>"));
             try {
                 File file = new File(filename);
-                BufferedWriter output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file)));
+                BufferedWriter output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file),"UTF-8"));
                 output.write(xml);
                 output.close();
             } catch (IOException e) {
