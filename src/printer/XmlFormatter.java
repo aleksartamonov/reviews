@@ -8,6 +8,7 @@ package printer; /**
 
 import com.sun.org.apache.xml.internal.serialize.OutputFormat;
 import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
+import logger.Logger;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -52,10 +53,13 @@ public class XmlFormatter {
             InputSource is = new InputSource(new StringReader(in));
             return db.parse(is);
         } catch (ParserConfigurationException e) {
+            Logger.LOG.error(e);
             throw new RuntimeException(e);
         } catch (SAXException e) {
+            Logger.LOG.error(e);
             throw new RuntimeException(e);
         } catch (IOException e) {
+            Logger.LOG.error(e);
             throw new RuntimeException(e);
         }
     }

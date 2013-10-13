@@ -30,7 +30,7 @@ public abstract class InfoBlock {
     protected String extractTextFromTag(Elements tag, String htmlClassName) {
         String s;
         Elements tempTag = tag.select("." + htmlClassName);
-        s = !tempTag.isEmpty() ? tempTag.first().text().replaceAll("\u00a0","") : null;
+        s = !tempTag.isEmpty() ? tempTag.first().text() : null;
         return s;
     }
 
