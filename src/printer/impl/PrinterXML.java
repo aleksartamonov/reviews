@@ -33,7 +33,7 @@ public class PrinterXML implements Printer {
         try {
             File file = new File(filename);
 
-            BufferedWriter output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file,!first),"UTF-8"));
+            BufferedWriter output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file,!first),"UTF8"));
             if (!file.exists()) {
                 file.createNewFile();
             }
@@ -53,7 +53,7 @@ public class PrinterXML implements Printer {
 
             String sCurrentLine;
             String xml = "";
-            br = new BufferedReader(new InputStreamReader(new FileInputStream(filename),"UTF-8"));
+            br = new BufferedReader(new InputStreamReader(new FileInputStream(filename),"UTF8"));
 
             while ((sCurrentLine = br.readLine()) != null) {
                 xml += sCurrentLine;
@@ -62,7 +62,7 @@ public class PrinterXML implements Printer {
             xml = formatter.formatXml("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<reviews>" + xml + "</reviews>");
             try {
                 File file = new File(filename);
-                BufferedWriter output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file),"UTF-8"));
+                BufferedWriter output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file),"UTF8"));
                 output.write(xml);
                 output.close();
             } catch (IOException e) {
