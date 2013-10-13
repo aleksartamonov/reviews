@@ -63,7 +63,7 @@ public class PrinterXML implements Printer {
                 xml += sCurrentLine;
             }
             XmlFormatter formatter = new XmlFormatter();
-            xml = formatter.formatXml(concatThreeStrings("<?xml version=\"1.0\"?>\n<reviews>",xml,
+            xml = formatter.formatXml(concatThreeStrings("<?xml version=\"1.0\"?><reviews>",xml,
                     "</reviews>"));
             try {
                 File file = new File(filename);
