@@ -27,6 +27,8 @@ public class PrinterXML implements Printer {
     }
 
 
+
+
     @Override
     public void write(Review review, String filename) throws JSONException, IOException {
 
@@ -63,8 +65,8 @@ public class PrinterXML implements Printer {
                 xml += sCurrentLine;
             }
             XmlFormatter formatter = new XmlFormatter();
-            xml = formatter.formatXml(concatThreeStrings("<?xml version=\"1.0\"?><reviews>",xml,
-                    "</reviews>"));
+            xml = formatter.formatXML(concatThreeStrings("<?xml version=\"1.0\" encoding=\"UTF-8\"?><reviews>",xml,
+                  "</reviews>"));
             try {
                 File file = new File(filename);
                 BufferedWriter output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file),"UTF-8"));
