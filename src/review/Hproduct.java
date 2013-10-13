@@ -31,6 +31,16 @@ public class Hproduct extends InfoBlock {
     @Expose
     private HashMap<String, String> identifier;
 
+    /**
+     *
+     * @param val
+     * @param category
+     * @param photo
+     * @param url
+     * @param brand
+     * @param fn
+     * @param identifier
+     */
     public Hproduct(String val, String category, String photo, String url, String brand, String fn,
                     HashMap<String, String> identifier) {
         this.val = val;
@@ -47,7 +57,6 @@ public class Hproduct extends InfoBlock {
     @Override
     public String toString() {
         return "review.review.Hproduct{" +
-                "val='" + val + '\'' +
                 ", category='" + category + '\'' +
                 ", photo='" + photo + '\'' +
                 ", url='" + url + '\'' +
@@ -77,7 +86,7 @@ public class Hproduct extends InfoBlock {
         String val, category, photo, url, brand, fn;
         HashMap<String, String> identifier;
         val = eHproduct.first().text();
-        category = extractTextFromTag(eHproduct, "category");
+        category = extractValFromTag(eHproduct, "category");
         photo = extractTextFromTag(eHproduct, "photo");
         brand = extractTextFromTag(eHproduct, "brand");
         fn = extractTextFromTag(eHproduct, "fn");

@@ -27,8 +27,7 @@ public class Item extends InfoBlock {
 
     @Override
     public String toString() {
-        return "review.review.Item{" +
-                "val='" + val + '\'' +
+        return "review.Item{" +
                 ", hproduct=" + hproduct +
                 '}';
     }

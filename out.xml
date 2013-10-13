@@ -7,7 +7,7 @@
     <description>На ТО мне педаль газа смазали, а то она скрипела, и я сам переднюю пассажирскую дверь смазал, она тоже скрипела, но больше ничего.</description>
     <item>
       <hproduct>
-        <category/>
+        <category>auto</category>
         <brand>Chery</brand>
         <identifier>
           <body-type>внедорожник</body-type>
@@ -29,7 +29,7 @@
     <rating>
       <value>4</value>
     </rating>
-    <type/>
+    <type>auto</type>
   </review>
   <review>
     <dtReviewed>2013-10-11</dtReviewed>
@@ -38,7 +38,7 @@
     <description>Поломок не было. Всё, что требует машина – это вовремя проходить ТО и менять расходники. Думаю, что это не сложно. И ещё, заправляюсь 92, нормально едет, разницы с 95 никакой.</description>
     <item>
       <hproduct>
-        <category/>
+        <category>auto</category>
         <brand>Nissan</brand>
         <identifier>
           <body-type>внедорожник</body-type>
@@ -60,6 +60,6 @@
     <rating>
       <value>5</value>
     </rating>
-    <type/>
+    <type>auto</type>
   </review>
 </reviews>

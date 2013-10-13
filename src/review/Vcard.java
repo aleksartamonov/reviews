@@ -27,7 +27,6 @@ public class Vcard extends InfoBlock {
     @Override
     public String toString() {
         return "review.review.Vcard{" +
-                "val='" + val + '\'' +
                 ", fn='" + fn + '\'' +
                 '}';
     }

@@ -68,9 +68,10 @@ public class Review extends InfoBlock {
 
     @Override
     public String toString() {
-        return "review.review.review.Review.review.review.Review{" +
-                "summary='" + summary + '\'' +
-                ", description='" + description + '\'' +
+        String desStr = description.length()>20 ?description.substring(0,20) + " ... " : description;
+        return "review.Review{" +
+                "summary='" + summary+ '\'' +
+                ", description='" + desStr +'\'' +
                 ", pro='" + pro + '\'' +
                 ", contra='" + contra + '\'' +
                 ", dtReviewed='" + dtReviewed + '\'' +
@@ -98,7 +99,7 @@ public class Review extends InfoBlock {
         contra = extractTextFromTag(e, "contra");
         dtReviewed = extractTextFromTag(e, "dtReviewed");
         reviewsUrl = extractTextFromTag(e, "reviewsUrl");
-        type = extractTextFromTag(e, "type");
+        type = e.attr("type");
         owningTime = extractTextFromTag(e, "owningTime");
         permalink = extractHrefValFromTag(e, "permalink", parser.mainPageUrl);
 

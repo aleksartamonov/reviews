@@ -30,7 +30,7 @@ public abstract class InfoBlock {
     protected String extractTextFromTag(Elements tag, String htmlClassName) {
         String s;
         Elements tempTag = tag.select("." + htmlClassName);
-        s = !tempTag.isEmpty() ? tempTag.first().text() : null;
+        s = !tempTag.isEmpty() ? tempTag.first().text().replaceAll("\u00a0","") : null;
         return s;
     }
 
@@ -39,5 +39,9 @@ public abstract class InfoBlock {
         Elements tempTag = tag.select("." + htmlClassName);
         return !tempTag.isEmpty() ? url + tempTag.attr("href") : null;
 
+    }
+    protected String extractValFromTag(Elements tag,String className){
+        Elements tempTag = tag.select("."+className);
+        return !tempTag.isEmpty() ? tempTag.select(".value-title").attr("title") : null;
     }
 }

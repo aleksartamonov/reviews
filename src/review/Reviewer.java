@@ -27,8 +27,7 @@ public class Reviewer extends InfoBlock {
 
     @Override
     public String toString() {
-        return "review.review.Reviewer{" +
-                "val='" + val + '\'' +
+        return "review.Reviewer{" +
                 ", vcard=" + vcard +
                 '}';
     }
