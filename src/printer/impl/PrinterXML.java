@@ -40,7 +40,7 @@ public class PrinterXML implements Printer {
             if (!file.exists()) {
                 file.createNewFile();
             }
-            BufferedWriter output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file,!first)));
+            BufferedWriter output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file,!first),"UTF-8"));
             output.write(concatThreeStrings("<review>",xml,"</review>"));
             output.close();
         } catch (IOException e) {
